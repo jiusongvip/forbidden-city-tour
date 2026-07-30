@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema, articleSchema } from "../utils/schema";
+const schema = [articleSchema("Forbidden City Opening Hours 2026: Full Schedule", "Complete guide to Forbidden City opening hours 2026: peak season 8:30 AM-5 PM, off-peak 8:30 AM-4:30 PM, Monday closures, best arrival times.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Opening Hours", url: "/opening-hours" }])];
+---
+<Layout
+  title="Forbidden City Opening Hours 2026 | Full Schedule"
+  description="Forbidden City opening hours 2026: peak season 8:30 AM-5 PM, off-peak 8:30 AM-4:30 PM, Monday closures, holiday exceptions, and best arrival times."
+  canonicalURL="/opening-hours"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Opening Hours", url: "/opening-hours" }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Hours</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Forbidden City Opening Hours 2026</h1>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-24">
+    <div class="space-y-12">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Opening Hours by Season</h2>
+        <h3 class="text-lg font-semibold text-charcoal mt-4 mb-1">Key Information</h3>
+        <p class="mt-4 text-charcoal">The Forbidden City is open <strong>Tuesday through Sunday</strong>. It is <strong>closed every Monday</strong> except during Chinese national holidays.</p>
+        <div class="mt-6 overflow-hidden rounded-lg border border-stone-warm">
+          <table class="w-full text-sm">
+            <thead class="border-b border-stone-warm bg-stone-warm/50">
+              <tr><th class="px-5 py-3 text-left font-medium">Season</th><th class="px-5 py-3 text-left font-medium">Dates</th><th class="px-5 py-3 text-left font-medium">Hours</th><th class="px-5 py-3 text-right font-medium">Last Entry</th></tr>
+            </thead>
+            <tbody class="divide-y divide-stone-warm">
+              <tr><td class="px-5 py-3 font-medium">Peak</td><td class="px-5 py-3 text-charcoal">Apr 1 – Oct 31</td><td class="px-5 py-3">8:30 AM – 5:00 PM</td><td class="px-5 py-3 text-right text-charcoal">4:00 PM</td></tr>
+              <tr><td class="px-5 py-3 font-medium">Off-peak</td><td class="px-5 py-3 text-charcoal">Nov 1 – Mar 31</td><td class="px-5 py-3">8:30 AM – 4:30 PM</td><td class="px-5 py-3 text-right text-charcoal">3:30 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-sm text-charcoal">Ticket sales stop one hour before closing. Last entry is 50 minutes before the posted closing time.</p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Best Time to Arrive</h2>
+        <p class="mt-4 text-charcoal">Arrive by <strong>8:00 AM</strong> — 30 minutes before opening. This gives you time to clear security and be among the first inside. The 8:30-9:30 AM window is the quietest of the day. By 10 AM the main courtyards are crowded, and by noon the Hall of Supreme Harmony area is packed.</p>
+        <p class="mt-3 text-charcoal"><strong>Pro tip:</strong> Most tour groups arrive between 9:30 and 10:30 AM. If you can, enter right at 8:30 and walk the central axis before the crowds build. Then explore side halls and galleries during the busy midday hours.</p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Holiday Schedule</h2>
+        <p class="mt-4 text-charcoal">During Chinese national holidays, the Forbidden City may extend its hours or have adjusted entry procedures:</p>
+        <ul class="mt-3 space-y-2 text-charcoal">
+          <li><strong>Chinese New Year</strong> (late January/February): Closed New Year’s Eve and Day. Reopens with regular hours. Very crowded for the first week after reopening.</li>
+          <li><strong>Golden Week</strong> (October 1-7): Open daily including Monday. Extended hours may apply (8:00 AM-5:30 PM). Extremely crowded. Tickets sell out within minutes.</li>
+          <li><strong>Qingming Festival</strong> (early April): Regular hours, moderately busy.</li>
+        </ul>
+      </div>
+    </div>
+  
+  </section>
+
+</Layout>

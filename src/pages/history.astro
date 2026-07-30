@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema, articleSchema } from "../utils/schema";
+const schema = [articleSchema("The Forbidden City: 600 Years of Imperial China's History", "From the Ming Dynasty to the Palace Museum, discover the story behind the world's largest palace complex with 9,999 rooms, 1.8 million artifacts, and centuries of imperial secrets.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "History", url: "/history" }])];
+---
+<Layout
+  title="Forbidden City History: 600 Years of Imperial China"
+  description="Complete history of the Forbidden City: built 1406-1420 by the Yongle Emperor. Ming and Qing dynasties, UNESCO since 1987, and imperial palace facts."
+  canonicalURL="/history"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "History", url: "/history" }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">History</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">The Forbidden City: 600 Years of Imperial History</h1>
+    <p class="mt-4 max-w-xl text-lg text-charcoal">From the Ming Dynasty to the Palace Museum, discover the story behind the world's largest palace complex.</p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 pb-24">
+    <article class="max-w-3xl space-y-12">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Construction (1406-1420)</h2>
+        <h3 class="text-lg font-semibold text-charcoal mt-6 mb-2">The Vision of the Yongle Emperor</h3>
+        <p class="mt-4 text-charcoal">The Yongle Emperor of the Ming Dynasty ordered the construction of a new imperial palace in Beijing after moving the capital from Nanjing. Over one million laborers, including 100,000 artisans, worked for 14 years to complete it. Materials came from across the empire: marble from Fangshan, timber from the southwestern forests, golden bricks from Suzhou.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">The Ming Dynasty (1420-1644)</h2>
+        <h3 class="text-lg font-semibold text-charcoal mt-6 mb-2">The Forbidden Palace</h3>
+        <p class="mt-4 text-charcoal">Twenty-four emperors ruled from the Forbidden City: fourteen from the Ming and ten from the Qing. The palace was the political and ceremonial center of China for nearly 500 years. During the Ming era, the emperor was a near-absolute ruler, and entry to the inner court was forbidden to all but the emperor, his family, eunuchs, and concubines — hence the name.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">The Qing Dynasty (1644-1912)</h2>
+        <h3 class="text-lg font-semibold text-charcoal mt-6 mb-2">The Manchu Expansion</h3>
+        <p class="mt-4 text-charcoal">The Manchu Qing dynasty expanded and renovated the palace significantly. The Qianlong Emperor (r. 1735-1796) in particular was a great patron of the arts and amassed much of the collection now housed in the Palace Museum. The last emperor, Puyi, was allowed to live in the inner court until his expulsion in 1924.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">The Palace Museum (1925-Present)</h2>
+        <h3 class="text-lg font-semibold text-charcoal mt-6 mb-2">Opening to the World</h3>
+        <p class="mt-4 text-charcoal">In 1925, the Forbidden City was transformed into the Palace Museum, opening its doors to the public for the first time. Today it houses over 1.8 million artifacts spanning Chinese art, ceramics, calligraphy, painting, and imperial treasures. It was designated a UNESCO World Heritage Site in 1987.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Fascinating Facts</h2>
+        <h3 class="text-lg font-semibold text-charcoal mt-6 mb-2">Little-Known Details</h3>
+        <ul class="mt-4 space-y-3 text-charcoal">
+          <li>The Forbidden City has 9,999 rooms — one less than the 10,000 rooms of the mythical Heavenly Palace, as only the Son of Heaven (the Jade Emperor) could have 10,000.</li>
+          <li>The palace survived over 200 earthquakes, thanks to ingenious interlocking wooden bracket systems (dougong) that absorb seismic shock.</li>
+          <li>The roofs are covered in yellow glazed tiles — yellow was the imperial color, reserved exclusively for the emperor.</li>
+          <li>Not a single nail was used in the original wooden construction. The entire structure uses mortise-and-tenon joinery.</li>
+          <li>The marble ramp behind the Hall of Preserving Harmony is carved from a single 250-ton stone, transported 70 km on an ice road during winter.</li>
+        </ul>
+      </div>
+    </article>
+  
+  </section>
+
+</Layout>

@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema, articleSchema } from "../utils/schema";
+const schema = [articleSchema("Forbidden City Visitor Tips: 12 Essential Things to Know", "12 essential Forbidden City visitor tips for 2026: what to wear, what to bring, how to avoid crowds, best photo times, ticket booking strategy.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Tips", url: "/tips" }])];
+---
+<Layout
+  title="Forbidden City Visitor Tips: 12 Essential Things to Know"
+  description="12 essential Forbidden City tips for 2026: what to wear, what to bring, how to avoid crowds, best photo times, ticket booking strategy, and insider advice."
+  canonicalURL="/tips"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Tips", url: "/tips" }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Tips</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Essential Visitor Tips for the Forbidden City</h1>
+  </section>
+  <section class="mx-auto max-w-7xl px-6 pb-24">
+    <div class="max-w-3xl space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Before You Go</h2>
+        <h3 class="text-lg font-semibold text-charcoal mt-4 mb-2">Essential Preparation</h3>
+        <ul class="space-y-4 text-charcoal">
+        <li><strong>1. Book tickets exactly 7 days ahead.</strong> Tickets go on sale at 8:00 PM Beijing time. Set an alarm. Peak season tickets sell out in under 10 minutes.</li>
+        <li><strong>2. Bring your passport.</strong> You cannot enter without the exact passport used for booking. A photo or photocopy is not accepted.</li>
+        <li><strong>3. Arrive before 8:00 AM.</strong> The first hour is magical. By 10 AM the courtyards are packed.</li>
+        <li><strong>4. Wear comfortable walking shoes.</strong> You will walk 5-8 km on stone and marble surfaces. No exaggeration.</li>
+        <li><strong>5. Bring water and snacks.</strong> There are cafes inside but they are expensive and crowded. Pack your own.</li>
+        <li><strong>6. Sun protection is essential.</strong> There is very little shade in the massive courtyards. Hat, sunglasses, and sunscreen.</li>
+      </ul>
+      </div>
+      <h2 class="text-2xl font-bold tracking-tight mt-10">On the Day</h2>
+      <h3 class="text-lg font-semibold text-charcoal mt-4 mb-2">During Your Visit</h3>
+      <ul class="space-y-4 text-charcoal">
+        <li><strong>7. Rent an audio guide.</strong> 40 CNY for a device that greatly enriches the experience. Available in multiple languages at the entrance.</li>
+        <li><strong>8. Go on weekday mornings.</strong> Tuesday through Thursday mornings are noticeably quieter than weekends.</li>
+        <li><strong>9. Avoid Chinese national holidays.</strong> Golden Week (early October) and Chinese New Year bring enormous domestic crowds.</li>
+        <li><strong>10. Bring a power bank.</strong> You will take hundreds of photos. There are no charging stations inside.</li>
+        <li><strong>11. Check the weather.</strong> Beijing summers are hot (35+ degrees). Spring and autumn are ideal. Winter is cold but less crowded.</li>
+        <li><strong>12. Consider a guided tour.</strong> A good guide transforms the experience with stories and historical context you would never get on your own.</li>
+      </ul>
+      <div class="mt-8"><a href="/tours" class="text-sm font-medium text-imperial hover:underline">Browse guided tours with skip-the-line access</a></div>
+    </div>
+  
+  </section>
+
+</Layout>

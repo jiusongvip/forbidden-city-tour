@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { tours } from "../../data/tours";
+import { breadcrumbListSchema, itemListSchema } from "../../utils/schema";
+const tourItems = tours.map((t) => ({ name: t.name, url: "/tours/" + t.slug }));
+const schema = [itemListSchema(tourItems), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Tours", url: "/tours" }])];
+---
+<Layout
+  title="10 Best Forbidden City Tours 2026 | Reviews & Prices"
+  description="Compare the top 10 Forbidden City tours for 2026: private guides, group tours, VIP skip-the-line. Honest reviews, durations, prices, and booking tips."
+  canonicalURL="/tours"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Tours", url: "/tours" }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Tours</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Best Forbidden City Tours: Expert-Reviewed & Ranked</h1>
+    <p class="mt-4 max-w-xl text-lg text-charcoal">Compare the top tours, from private guides to group experiences and VIP skip-the-line access.</p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 pb-24">
+    <h2 class="text-2xl font-bold tracking-tight mb-5">Tour Comparison Table</h2>
+    <div class="overflow-x-auto rounded-lg border border-stone-warm">
+      <table class="w-full text-left text-sm">
+        <thead class="border-b border-stone-warm bg-stone-warm/50">
+          <tr>
+            <th class="px-5 py-4 font-medium text-ink">Tour</th>
+            <th class="px-5 py-4 font-medium text-ink hidden md:table-cell">Duration</th>
+            <th class="px-5 py-4 font-medium text-ink">Price</th>
+            <th class="px-5 py-4 font-medium text-ink hidden sm:table-cell">Rating</th>
+            <th class="px-5 py-4"></th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-stone-warm">
+          {tours.map((tour) => (
+            <tr class="transition-colors hover:bg-stone-warm/30">
+              <td class="px-5 py-4">
+                <a href={`/tours/${tour.slug}`} class="font-medium text-ink hover:text-imperial">{tour.name}</a>
+                <p class="mt-0.5 text-xs text-charcoal hidden sm:block">{tour.description.slice(0, 80)}...</p>
+              </td>
+              <td class="px-5 py-4 text-charcoal hidden md:table-cell">{tour.duration}</td>
+              <td class="px-5 py-4 font-medium">{tour.price}</td>
+              <td class="px-5 py-4 hidden sm:table-cell">
+                <span class="inline-flex items-center gap-1 rounded-sm bg-gold/15 px-2 py-0.5 text-xs font-medium text-ink">
+                  {tour.rating}
+                </span>
+              </td>
+              <td class="px-5 py-4 text-right">
+                <a href={`/tours/${tour.slug}`} class="text-sm font-medium text-imperial hover:underline">View</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="bg-stone-warm py-24">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="text-3xl font-bold tracking-tight">How to Choose Your Tour</h2>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        <div>
+          <h3 class="font-display text-lg font-medium">Budget Travelers</h3>
+          <p class="mt-2 text-sm text-charcoal">Group tours and half-day options give you an excellent overview without breaking the bank. The essentials, well delivered.</p>
+        </div>
+        <div>
+          <h3 class="font-display text-lg font-medium">History Enthusiasts</h3>
+          <p class="mt-2 text-sm text-charcoal">Private full-day tours with a historian guide unlock the stories behind the architecture, art, and imperial life.</p>
+        </div>
+        <div>
+          <h3 class="font-display text-lg font-medium">Time-Conscious</h3>
+          <p class="mt-2 text-sm text-charcoal">VIP skip-the-line tours maximize every minute. Priority entry, curated routes, and zero waiting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

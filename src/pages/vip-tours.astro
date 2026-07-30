@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema, articleSchema } from "../utils/schema";
+const schema = [articleSchema("Forbidden City VIP Tour: Skip the Line 2026", "Experience the Forbidden City like royalty with VIP skip-the-line tours: priority entry, private guide, exclusive area access from $150.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "VIP Tours", url: "/vip-tours" }])];
+---
+<Layout
+  title="Forbidden City VIP Tour: Skip the Line 2026"
+  description="Forbidden City VIP skip-the-line tours: priority entry, private guide, exclusive areas. Compare 2026 prices from $150 per person with curated routes."
+  canonicalURL="/vip-tours"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "VIP Tours", url: "/vip-tours" }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">VIP Tours</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">VIP Skip-the-Line Forbidden City Tours 2026</h1>
+    <p class="mt-4 max-w-xl text-lg text-charcoal">Priority access, private guide, and areas most visitors never see. The ultimate Forbidden City experience.</p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-24">
+    <div class="space-y-12">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">What Makes VIP Different</h2>
+        <p class="mt-4 text-charcoal">A VIP Forbidden City tour is not just a tour — it is an experience. While standard groups navigate crowds and wait in lines, VIP guests enter through a priority gate, walk curated routes with a dedicated private guide, and access halls restricted to special permits. No queues. No crowds. Just the palace, your guide, and the stories that bring 600 years of history to life.</p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">VIP Tour Benefits</h2>
+        <div class="mt-6 space-y-4">
+          <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">1</span><div><strong class="font-medium">Priority Skip-the-Line Entry</strong><p class="text-sm text-charcoal">Bypass the main queue through a dedicated entrance. On busy days, this saves 30-60 minutes.</p></div></div>
+          <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">2</span><div><strong class="font-medium">Dedicated Private Guide</strong><p class="text-sm text-charcoal">Expert historian or academic guide fluent in English. Deep knowledge of architecture, art, and imperial history.</p></div></div>
+          <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">3</span><div><strong class="font-medium">Customized Route</strong><p class="text-sm text-charcoal">Your guide adapts the itinerary to your interests. Architecture buff? Focus on structural details. Art lover? Spend more time in the galleries.</p></div></div>
+          <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">4</span><div><strong class="font-medium">Exclusive Areas</strong><p class="text-sm text-charcoal">Access to halls and courtyards typically restricted to special permits. See parts of the palace most tourists never experience.</p></div></div>
+          <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">5</span><div><strong class="font-medium">Zero Waiting</strong><p class="text-sm text-charcoal">No queues for entry, no jostling for views in crowded halls. Maximum time inside the palace.</p></div></div>
+        </div>
+      </div>
+
+      <div class="rounded-lg border border-imperial/15 bg-imperial/5 p-6">
+        <h3 class="font-display font-medium text-imperial">VIP tours from $150 per person</h3>
+        <p class="mt-2 text-sm text-charcoal">5-hour experience with priority entry, private guide, exclusive area access, and optional tea ceremony.</p>
+        <a href="/private-tours" class="mt-3 inline-block text-sm font-medium text-imperial hover:underline">View VIP tour options</a>
+      </div>
+    </div>
+  
+  </section>
+
+</Layout>

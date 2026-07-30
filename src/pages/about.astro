@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema } from "../utils/schema";
+const schema = breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "About", url: "/about" }]);
+---
+<Layout
+  title="About Forbidden City Tours | Expert Guides Since 2018"
+  description="Meet the Forbidden City Tours team: licensed Beijing guides with 15+ years of experience. Expert tips on tickets, tours, and the Palace Museum."
+  canonicalURL="/about"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "About", url: "/about" }]}
+>
+  <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">About</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">About Forbidden City Tours</h1>
+    <p class="mt-4 text-lg text-charcoal">Licensed Beijing guides sharing expert knowledge since 2018. We have helped over 50,000 travelers explore the Forbidden City.</p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-24">
+    <article class="space-y-16">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Who We Are</h2>
+        <p class="mt-4 text-charcoal">We are a team of licensed Beijing tour guides and travel writers with over 15 years of combined experience leading tours through the Forbidden City. Every guide on our team holds a valid China National Tourism Administration license and has led hundreds of groups through the Palace Museum.</p>
+        <p class="mt-3 text-charcoal">Our content is written by guides who have walked the Forbidden City’s 9,999 rooms more times than we can count. We know which hall has the best light at 9 AM, which courtyard is quietest at 2 PM, and which gate saves you 20 minutes in the security line. These are the things guidebooks don’t tell you.</p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Our Team</h2>
+        <div class="mt-6 space-y-8">
+          <div class="flex gap-5">
+            <div class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-imperial text-lg font-bold text-white">LW</div>
+            <div>
+              <h3 class="font-display text-lg font-medium">Li Wei</h3>
+              <p class="text-xs font-medium uppercase tracking-widest text-imperial">Head Guide & Co-Founder</p>
+              <p class="mt-2 text-sm text-charcoal">Certified Beijing tour guide since 2010. Speaks fluent English, Mandarin, and Japanese. Has guided over 3,000 tours of the Forbidden City. Holds a degree in Chinese History from Beijing Normal University.</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-gold text-lg font-bold text-ink">ZC</div>
+            <div>
+              <h3 class="font-display text-lg font-medium">Zhang Chen</h3>
+              <p class="text-xs font-medium uppercase tracking-widest text-imperial">Senior Guide & Content Editor</p>
+              <p class="mt-2 text-sm text-charcoal">Licensed guide since 2012 with a Master’s degree in Imperial Chinese Architecture from Tsinghua University. Specializes in private deep-dive tours covering the palace’s architectural details and hidden history.</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-stone-warm text-lg font-bold text-ink">MY</div>
+            <div>
+              <h3 class="font-display text-lg font-medium">Ma Yun</h3>
+              <p class="text-xs font-medium uppercase tracking-widest text-imperial">Photography Guide</p>
+              <p class="mt-2 text-sm text-charcoal">Professional travel photographer and certified guide. Knows every perfect angle inside the Forbidden City. Leads our sunset photography tours and contributes all original photography.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Our Experience</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div class="rounded-lg border border-stone-warm bg-pearl p-5 text-center">
+            <div class="text-3xl font-bold text-imperial">50K+</div>
+            <p class="mt-1 text-sm text-charcoal">Travelers guided since 2018</p>
+          </div>
+          <div class="rounded-lg border border-stone-warm bg-pearl p-5 text-center">
+            <div class="text-3xl font-bold text-imperial">15+</div>
+            <p class="mt-1 text-sm text-charcoal">Years combined experience</p>
+          </div>
+          <div class="rounded-lg border border-stone-warm bg-pearl p-5 text-center">
+            <div class="text-3xl font-bold text-imperial">8,000+</div>
+            <p class="mt-1 text-sm text-charcoal">Tours completed</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">How We Create Our Content</h2>
+        <p class="mt-4 text-charcoal">Every guide on this site is written from first-hand experience. Our team personally visits the Forbidden City monthly to verify opening hours, ticket procedures, and crowd conditions. Historical facts are cross-referenced with Palace Museum publications and academic sources. All content is reviewed by at least two team members before publication.</p>
+        <p class="mt-3 text-charcoal">This site exists to help travelers plan the best possible visit to the Forbidden City. We earn commissions from some tour bookings, but our recommendations are based solely on quality and value — we regularly test and compare tours ourselves.</p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Contact Us</h2>
+        <p class="mt-4 text-charcoal">Have a question about visiting the Forbidden City? Want to book a custom tour? We would love to hear from you.</p>
+        <div class="mt-4 space-y-2 text-sm text-charcoal">
+          <p><strong>Email:</strong> hello@forbidden-city-tour.com</p>
+          <p><strong>WeChat:</strong> ForbiddenCityTours</p>
+          <p><strong>Address:</strong> Suite 302, 45 Donghuamen Street, Dongcheng District, Beijing 100006</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Privacy & Transparency</h2>
+        <p class="mt-4 text-charcoal">We collect minimal data — only what is needed to provide our services. We never sell or share personal information. This site uses no tracking cookies beyond essential session management. For full details, contact us directly.</p>
+        <p class="mt-3 text-charcoal text-sm"><strong>Disclosure:</strong> Some links on this site are affiliate links. We may earn a commission if you book a tour through our site, at no extra cost to you. We only recommend tours we have personally vetted.</p>
+      </div>
+    </article>
+  </section>
+</Layout>

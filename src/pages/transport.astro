@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema, articleSchema } from "../utils/schema";
+const schema = [articleSchema("How to Get to the Forbidden City: Subway, Taxi & Bus Guide", "Complete guide to getting to the Forbidden City in Beijing: subway Line 1 to Tiananmen East, taxi drop-off points, bus routes, walking directions.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Transport", url: "/transport" }])];
+---
+<Layout
+  title="How to Get to the Forbidden City | Subway & Taxi Guide"
+  description="How to reach the Forbidden City: subway Line 1 to Tiananmen East, taxi drop-off at Donghuamen, bus routes, walking directions from central Beijing."
+  canonicalURL="/transport"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Transport", url: "/transport" }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Transport</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">How to Get to the Forbidden City</h1>
+  </section>
+  <section class="mx-auto max-w-3xl px-6 pb-24">
+    <div class="space-y-12">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">By Subway (Recommended)</h2>
+        <p class="mt-4 text-charcoal">The fastest, cheapest, and easiest way. Take <strong>Line 1</strong> to <strong>Tiananmen East</strong> station (Exit B or C). Walk north through Tiananmen Gate for about 10-15 minutes to reach the Meridian Gate entrance. Alternatively, get off at Tiananmen West station and walk via the same route.</p>
+        <p class="mt-2 text-charcoal">Subway fare: 3-6 CNY depending on distance. Trains run from approximately 5:00 AM to 11:00 PM.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">By Taxi</h2>
+        <p class="mt-4 text-charcoal">Taxis can drop you near the east gate on <strong>Donghuamen Street</strong>. Expect to pay 30-60 CNY from most central Beijing locations. Important: taxis cannot drive all the way to the Meridian Gate — you will walk the last 5-10 minutes.</p>
+        <p class="mt-2 text-charcoal">Show your driver: <strong>请送我到故宫东华门</strong> (Please take me to the Forbidden City Donghuamen). Use Didi or the official Beijing taxi app for reliable service.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">By Bus</h2>
+        <p class="mt-4 text-charcoal">Buses 1, 2, 5, 10, 20, 52, 82, 120, 126, and Tourist Bus Line 1 all stop near Tiananmen Square. Get off at <strong>Tiananmen East</strong> or <strong>Tiananmen West</strong>. From there, walk north through the Gate of Heavenly Peace to reach the Forbidden City entrance.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Important Tips</h2>
+        <ul class="mt-4 space-y-2 text-charcoal">
+          <li><strong>Security checks</strong> are mandatory before entering Tiananmen Square. Allow 10-15 minutes.</li>
+          <li><strong>Passport required</strong> for entry to both Tiananmen Square and the Forbidden City.</li>
+          <li><strong>Exit at the north gate</strong> (Gate of Divine Might) after your visit. From there, Jingshan Park (for panoramic photos) is directly across the street.</li>
+          <li><strong>Avoid peak traffic</strong> (7:30-9:00 AM and 5:00-7:00 PM). Subway is always faster than taxi during these hours.</li>
+        </ul>
+      </div>
+    </div>
+  
+  </section>
+
+</Layout>

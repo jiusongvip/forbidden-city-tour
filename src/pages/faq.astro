@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema, faqPageSchema } from "../utils/schema";
+const faqs = [
+  { q: "Do I need to book tickets in advance?", a: "Yes. Tickets must be booked online through the official Palace Museum website or WeChat mini-program. They go on sale 7 days in advance at 8:00 PM Beijing time. There is no on-site ticket office." },
+  { q: "Can I visit without a tour guide?", a: "Absolutely. Audio guides are available for rent at the entrance (40 CNY, multiple languages). Many visitors explore independently, though a guided tour adds rich context to what you're seeing." },
+  { q: "Is the Forbidden City open on Mondays?", a: "No. The Forbidden City is closed every Monday for maintenance, except during Chinese national holidays. Plan your visit Tuesday through Sunday." },
+  { q: "How long should I plan for a visit?", a: "A minimum of 3 hours for the central axis highlights. For a thorough visit including the Treasure Gallery and side halls, plan 4-6 hours. Full-day tours can cover nearly everything." },
+  { q: "What ID do I need to enter?", a: "For foreign visitors: your passport. The name on your ticket must exactly match your passport. Chinese citizens use their national ID card. A photocopy or photo on your phone is not accepted." },
+  { q: "Is the Forbidden City wheelchair accessible?", a: "Partially. The main central axis has ramps and is relatively accessible. However, many side halls have steps and uneven stone floors. Wheelchair rentals are available at the entrance. Contact the Palace Museum in advance for the best route planning." },
+  { q: "Can I take photos inside?", a: "Yes, photography is allowed in most outdoor areas and exhibition halls. Tripods and selfie sticks are not permitted. Flash photography is prohibited in galleries to protect the artifacts." },
+  { q: "Are there places to eat inside?", a: "There are a few cafes and snack stands scattered throughout the complex. Options are limited and can be busy. Many visitors bring their own snacks and water. There are excellent restaurants just outside the north gate." },
+  { q: "What is the dress code?", a: "There is no formal dress code, but comfortable walking shoes are essential. The courtyards are mostly stone and marble, and you will walk 5-8 km. Dress for the weather and bring sun protection." },
+  { q: "What is the best way to get there?", a: "The easiest way is by subway: Line 1 to Tiananmen East or Tiananmen West station. From there, walk north through Tiananmen Gate to reach the Meridian Gate entrance. Taxis can drop you near the east gate on Donghuamen Street, but cannot drive all the way to the entrance." }
+];
+const schema = [faqPageSchema(faqs), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "FAQ", url: "/faq" }])];
+---
+<Layout
+  title="Forbidden City FAQ: Tickets, Hours & Visitor Questions"
+  description="Forbidden City FAQ: answers on tickets, opening hours, passport ID rules, tour tips, accessibility, photos, and transport for 2026 visitors."
+  canonicalURL="/faq"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "FAQ", url: "/faq" }]}
+>
+  <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">FAQ</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Frequently Asked Questions</h1>
+    <p class="mt-4 text-lg text-charcoal">Everything you need to know about visiting the Forbidden City, from tickets to timing to what to expect.</p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-24">
+    <h2 class="text-2xl font-bold tracking-tight mb-6">Top 10 Visitor Questions</h2>
+    <div class="divide-y divide-stone-warm">
+      {faqs.map((faq, i) => (
+        <details class="group py-5" open={i === 0}>
+          <summary class="flex cursor-pointer items-center justify-between gap-4">
+            <span class="font-display text-lg font-medium">{faq.q}</span>
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-sm border border-stone-warm text-sm transition-colors group-open:bg-imperial group-open:text-white group-open:border-imperial">+</span>
+          </summary>
+          <p class="mt-3 text-charcoal pr-10">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <div class="mt-16 rounded-lg border border-imperial/15 bg-imperial/5 p-8 text-center">
+      <h2 class="font-display text-xl font-medium">Still have questions?</h2>
+      <p class="mt-2 text-charcoal">Browse our complete visitor guide or find the perfect tour for your trip.</p>
+      <div class="mt-5 flex justify-center gap-4">
+        <a href="/guide" class="rounded-md bg-imperial px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">Visitor Guide</a>
+        <a href="/tours" class="rounded-md border border-imperial/20 px-5 py-2.5 text-sm font-medium text-imperial transition-colors hover:bg-imperial/5 active:translate-y-px">Browse Tours</a>
+      </div>
+    </div>
+  </section>
+</Layout>

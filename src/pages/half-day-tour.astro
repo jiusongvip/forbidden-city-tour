@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbListSchema, articleSchema } from "../utils/schema";
+const schema = [articleSchema("Forbidden City Half-Day Tour: Best 3-4 Hour Itinerary 2026", "Maximize your time with a perfectly planned Forbidden City half-day tour covering the essential highlights in 3-4 hours.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Half-Day Tours", url: "/half-day-tour" }])];
+---
+<Layout
+  title="Forbidden City Half-Day Tour: Best 3-4 Hour Itinerary 2026"
+  description="Maximize your time with a Forbidden City half-day tour. See the Hall of Supreme Harmony, Imperial Garden, and Treasure Gallery in 3-4 hours with expert tips."
+  canonicalURL="/half-day-tour"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Half-Day Tours", url: "/half-day-tour" }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Half-Day Tours</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Half-Day Forbidden City Tours: See the Best in 3-4 Hours</h1>
+  </section>
+  <section class="mx-auto max-w-3xl px-6 pb-24">
+    <div class="space-y-12">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Why a Half-Day Tour Works</h2>
+        <p class="mt-4 text-charcoal">Not everyone has a full day to explore Beijing’s most famous landmark. A well-planned half-day tour covers the absolute must-sees of the Forbidden City in 3 to 4 hours. You will walk the central axis, stand in the Hall of Supreme Harmony courtyard, and explore the imperial living quarters — all before lunch.</p>
+        <p class="mt-3 text-charcoal">Half-day tours are especially popular with travelers on short Beijing layovers, families with young children, and visitors combining the Forbidden City with other sights like Tiananmen Square, Jingshan Park, or the Temple of Heaven.</p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">What You Will See</h2>
+        <div class="mt-6 space-y-4">
+          <div class="flex gap-4">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">1</span>
+            <div><strong class="font-medium">Meridian Gate</strong><p class="text-sm text-charcoal">Enter through the grand southern gate. Five pavilions crown the top. Your guide explains the significance of the bronze lions and the five-arch entrance used only by the emperor.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">2</span>
+            <div><strong class="font-medium">Hall of Supreme Harmony</strong><p class="text-sm text-charcoal">The centerpiece. Stand in the largest courtyard in the complex, see the golden dragon throne, and learn about the imperial ceremonies held here.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">3</span>
+            <div><strong class="font-medium">Central Axis Palaces</strong><p class="text-sm text-charcoal">Walk through the Hall of Central Harmony and Hall of Preserving Harmony, where emperors prepared for ceremonies and hosted state banquets.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">4</span>
+            <div><strong class="font-medium">Palace of Heavenly Purity</strong><p class="text-sm text-charcoal">The emperor’s living quarters. A quieter, more intimate section with fascinating details about daily imperial life.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">5</span>
+            <div><strong class="font-medium">Imperial Garden</strong><p class="text-sm text-charcoal">End your tour in the tranquil garden with 600-year-old cypress trees, rockeries, and pavilions. A beautiful, shaded finale.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Half-Day Tour Tips</h2>
+        <ul class="mt-4 space-y-2 text-charcoal">
+          <li><strong>Book the 8:30 AM slot.</strong> The first two hours are the quietest. By 10:30 AM the courtyards fill up.</li>
+          <li><strong>Skip the side halls.</strong> A half-day tour focuses on the central axis. Side halls are for full-day explorers.</li>
+          <li><strong>Wear comfortable shoes.</strong> Even on a half-day tour, you will walk about 3 km on stone surfaces.</li>
+          <li><strong>Bring your passport.</strong> Required for entry. No exceptions.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-lg border border-imperial/15 bg-imperial/5 p-6">
+        <h3 class="font-display font-medium text-imperial">Half-day group tours from $35 per person</h3>
+        <p class="mt-2 text-sm text-charcoal">Includes skip-the-line entry and 3-4 hours with a licensed English-speaking guide. Private half-day options also available.</p>
+        <a href="/tours" class="mt-3 inline-block text-sm font-medium text-imperial hover:underline">Browse half-day tours</a>
+      </div>
+    </div>
+  
+  </section>
+
+</Layout>

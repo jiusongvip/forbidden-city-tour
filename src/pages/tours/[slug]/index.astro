@@ -1,0 +1,84 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { tours, type Tour } from "../../../data/tours";
+import { breadcrumbListSchema } from "../../../utils/schema";
+
+export function getStaticPaths() {
+  return tours.map((t) => ({ params: { slug: t.slug } }));
+}
+
+const { slug } = Astro.params;
+const tour = tours.find((t) => t.slug === slug) as Tour;
+const related = tours.filter((t) => t.slug !== slug).slice(0, 3);
+const schema = breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Tours", url: "/tours" }, { name: tour.name, url: `/tours/${tour.slug}` }]);
+---
+<Layout
+  title={`${tour.name} | Forbidden City Tours 2026`}
+  description={tour.description}
+  canonicalURL={`/tours/${tour.slug}`}
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Tours", url: "/tours" }, { name: tour.name, url: `/tours/${tour.slug}` }]}
+>
+  <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
+    <div class="grid gap-12 md:grid-cols-5">
+      <div class="md:col-span-3">
+        <img src={tour.image} alt={tour.name} class="w-full rounded-lg object-cover aspect-[16/9]" />
+        <div class="mt-8 flex items-center gap-4">
+          <span class="rounded-sm bg-imperial/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-imperial">{tour.category}</span>
+          <span class="text-sm text-charcoal">{tour.duration}</span>
+          <span class="rounded-sm bg-gold/15 px-2.5 py-0.5 text-xs font-medium">{tour.rating}</span>
+        </div>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">{tour.name}</h1>
+        <p class="mt-4 text-lg text-charcoal">{tour.description}</p>
+
+        <div class="mt-10">
+          <h2 class="text-2xl font-bold tracking-tight">Tour Highlights</h2>
+          <ul class="mt-4 space-y-2">
+            {tour.highlights.map((h) => (
+              <li class="flex items-center gap-3 text-charcoal">
+                <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-sm bg-imperial/10 text-xs text-imperial">&rarr;</span>
+                {h}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <aside class="md:col-span-2">
+        <div class="sticky top-24 rounded-lg border border-stone-warm bg-pearl p-6">
+          <p class="font-display text-3xl font-bold text-imperial">{tour.price}</p>
+          <p class="text-sm text-charcoal">per person</p>
+          <a href="/tours" class="mt-6 block w-full rounded-md bg-imperial px-5 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">
+            Book This Tour
+          </a>
+          <div class="mt-6 border-t border-stone-warm pt-6 space-y-3 text-sm text-charcoal">
+            <div class="flex justify-between"><span>Duration</span><span class="font-medium text-ink">{tour.duration}</span></div>
+            <div class="flex justify-between"><span>Category</span><span class="font-medium text-ink capitalize">{tour.category}</span></div>
+            <div class="flex justify-between"><span>Rating</span><span class="font-medium text-ink">{tour.rating} / 5.0</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="mt-24">
+      <h2 class="text-3xl font-bold tracking-tight">Other Tours You Might Like</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        {related.map((r) => (
+          <a href={`/tours/${r.slug}`} class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
+            <div class="h-44 overflow-hidden">
+              <img src={r.image} alt={r.name} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-charcoal">{r.duration}</span>
+                <span class="rounded-sm bg-imperial/10 px-2 py-0.5 text-xs font-medium text-imperial">{r.rating}</span>
+              </div>
+              <h3 class="mt-2 font-display font-medium">{r.name}</h3>
+              <p class="mt-2 font-medium text-imperial">{r.price}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
