@@ -47,10 +47,8 @@ const schema = breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Tours"
       <aside class="md:col-span-2">
         <div class="sticky top-24 rounded-lg border border-stone-warm bg-pearl p-6">
           <p class="font-display text-3xl font-bold text-imperial">{tour.price}</p>
-          <p class="text-sm text-charcoal">per person</p>
-          <a href="/tours" class="mt-6 block w-full rounded-md bg-imperial px-5 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">
-            Book This Tour
-          </a>
+          <p class="text-sm text-charcoal">reference price per person</p>
+          <p class="mt-4 rounded-md border border-imperial/20 bg-imperial/5 px-5 py-3 text-center text-sm font-medium text-imperial">Price Reference</p>
           <div class="mt-6 border-t border-stone-warm pt-6 space-y-3 text-sm text-charcoal">
             <div class="flex justify-between"><span>Duration</span><span class="font-medium text-ink">{tour.duration}</span></div>
             <div class="flex justify-between"><span>Category</span><span class="font-medium text-ink capitalize">{tour.category}</span></div>
