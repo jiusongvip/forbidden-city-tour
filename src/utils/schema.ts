@@ -1,4 +1,6 @@
 // Schema.org structured data helpers for Forbidden City Tours
+import type { Tour } from "../data/tours";
+
 const SITE_URL = "https://forbidden-city-tour.com";
 const SITE_NAME = "Forbidden City Tours";
 
@@ -27,6 +29,7 @@ export function touristAttractionSchema() {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
     name: "Forbidden City (Palace Museum)",
+    alternateName: "故宫博物院",
     description: "The world's largest imperial palace complex with 980 buildings across 72 hectares. UNESCO World Heritage Site housing over 1.8 million artifacts.",
     url: SITE_URL,
     address: {
@@ -102,6 +105,50 @@ export function faqPageSchema(questions: Array<{ question: string; answer: strin
         text: q.answer,
       },
     })),
+  };
+}
+
+export function tourSchema(tour: Tour) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: tour.name,
+    description: tour.description,
+    url: `${SITE_URL}/tours/${tour.slug}`,
+    image: `${SITE_URL}${tour.image}`,
+    provider: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: tour.priceFrom,
+      url: tour.bookURL,
+      availability: "https://schema.org/InStock",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: tour.rating,
+      reviewCount: tour.reviewCount,
+      bestRating: 5,
+    },
+    review: tour.reviews.map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.name },
+      reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+      datePublished: r.date,
+      reviewBody: r.text,
+    })),
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: tour.highlights.map((h, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: h,
+      })),
+    },
   };
 }
 

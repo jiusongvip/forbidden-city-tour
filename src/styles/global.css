@@ -29,6 +29,10 @@
     letter-spacing: -0.02em;
   }
 
+  section[id] {
+    scroll-margin-top: 90px;
+  }
+
   ::selection {
     background: #C41E3A;
     color: white;

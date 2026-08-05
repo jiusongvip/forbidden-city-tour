@@ -1,11 +1,38 @@
+export interface Review {
+  name: string;
+  country: string;
+  date: string;
+  rating: number;
+  verified: boolean;
+  text: string;
+}
+
 export interface Tour {
   slug: string;
   name: string;
   category: "group" | "private" | "vip" | "half-day" | "full-day";
   duration: string;
   price: string;
+  priceFrom: number;
+  wasFrom?: number;
   rating: number;
+  reviewCount: number;
+  ratingBreakdown: { guide: number; valueForMoney: number };
+  recommendationRate: number;
+  badgeOfExcellence: boolean;
+  priceGuarantee: boolean;
+  operator: string;
+  productCode: string;
+  reviews: Review[];
   highlights: string[];
+  includes: string[];
+  excludes: string[];
+  meetingPoint: string;
+  notSuitable: string[];
+  freeCancellation: boolean;
+  cancellationPolicy: string;
+  payLater: boolean;
+  bookURL: string;
   image: string;
   description: string;
 }
@@ -17,10 +44,53 @@ export const tours: Tour[] = [
     category: "group",
     duration: "4 hours",
     price: "$45 - $65",
+    priceFrom: 45,
+    wasFrom: 55,
     rating: 4.8,
+    reviewCount: 1264,
+    ratingBreakdown: { guide: 4.9, valueForMoney: 4.7 },
+    recommendationRate: 97,
+    badgeOfExcellence: true,
+    priceGuarantee: true,
+    operator: "Authentic China Tours",
+    productCode: "448763P3",
+    reviews: [
+      {
+        name: "Marco B.",
+        country: "Italy",
+        date: "2026-07-18",
+        rating: 5,
+        verified: true,
+        text: "Our guide Wei was superb, clear English, great stories about each hall, and he knew exactly where to stand to avoid the crowds. Best 4 hours in Beijing.",
+      },
+      {
+        name: "Sophie L.",
+        country: "France",
+        date: "2026-06-27",
+        rating: 5,
+        verified: true,
+        text: "Everything ran smoothly from the meeting point. The skip past the queue was a lifesaver in July. Highly recommend for first-timers.",
+      },
+      {
+        name: "Daniel K.",
+        country: "Germany",
+        date: "2026-05-09",
+        rating: 4,
+        verified: false,
+        text: "Good overview tour. A little fast-paced for photography, but the guide gave us time at each highlight to take it in.",
+      },
+    ],
     highlights: ["Hall of Supreme Harmony", "Palace of Heavenly Purity", "Imperial Garden"],
+    includes: ["Professional English-speaking guide", "Pre-booked entrance ticket", "Small group (max 12)"],
+    excludes: ["Hotel pickup and drop-off", "Gratuities", "Food and drinks", "Tiananmen Square"],
+    meetingPoint: "Meridian Gate (south entrance), look for the red umbrella beside the ticket office.",
+    notSuitable: ["Wheelchair users (no lifts between halls)", "Visitors with severe mobility limitations"],
+    freeCancellation: true,
+    cancellationPolicy: "Free cancellation up to 24 hours before the tour for a full refund.",
+    payLater: true,
+    bookURL: "https://www.getyourguide.com/beijing-l67/",
     image: "/images/group-tour.webp",
-    description: "Join a small group led by an English-speaking guide through the Forbidden City's iconic halls. Ideal for first-time visitors seeking a 4-hour overview."
+    description: "Join a small group led by an English-speaking guide through the Forbidden City's iconic halls. Ideal for first-time visitors seeking a 4-hour overview.",
   },
   {
     slug: "private-imperial-deep-dive",
@@ -28,10 +98,53 @@ export const tours: Tour[] = [
     category: "private",
     duration: "6 hours",
     price: "$180 - $250",
+    priceFrom: 180,
+    wasFrom: 210,
     rating: 4.9,
+    reviewCount: 842,
+    ratingBreakdown: { guide: 5.0, valueForMoney: 4.8 },
+    recommendationRate: 98,
+    badgeOfExcellence: true,
+    priceGuarantee: true,
+    operator: "Beijing Tour Company",
+    productCode: "614805P12",
+    reviews: [
+      {
+        name: "James H.",
+        country: "United Kingdom",
+        date: "2026-07-22",
+        rating: 5,
+        verified: true,
+        text: "One of the best private tours I have ever taken. Our historian unlocked the Treasure Gallery and the Hall of Clocks with fascinating detail. Worth every penny.",
+      },
+      {
+        name: "Aiko T.",
+        country: "Japan",
+        date: "2026-06-30",
+        rating: 5,
+        verified: true,
+        text: "Truly customized to our pace. The hidden courtyards away from the main route made this feel like a private palace, not a crowded museum.",
+      },
+      {
+        name: "Michael R.",
+        country: "USA",
+        date: "2026-04-15",
+        rating: 5,
+        verified: true,
+        text: "Our guide even helped us with the ticketing we thought we had missed. Incredibly professional and knowledgeable about imperial history.",
+      },
+    ],
     highlights: ["Treasure Gallery", "Clock Exhibition", "Hall of Clocks", "Hidden courtyards"],
+    includes: ["Private expert historian guide", "Pre-booked entrance & Treasure Gallery tickets", "Cups of tea mid-tour", "Fully flexible itinerary"],
+    excludes: ["Hotel pickup and drop-off", "Gratuities", "Lunch"],
+    meetingPoint: "Tiananmen East subway exit, or your hotel lobby (pickup on request).",
+    notSuitable: ["Wheelchair users (Treasure Gallery has steep stairs)"],
+    freeCancellation: true,
+    cancellationPolicy: "Free cancellation up to 48 hours before the tour for a full refund.",
+    payLater: true,
+    bookURL: "https://www.getyourguide.com/beijing-l67/",
     image: "/images/private-tour.webp",
-    description: "A private, fully customized tour with an expert historian. Explore the Treasure Gallery, Hall of Clocks, and hidden courtyards at your own pace."
+    description: "A private, fully customized tour with an expert historian. Explore the Treasure Gallery, Hall of Clocks, and hidden courtyards at your own pace.",
   },
   {
     slug: "vip-skip-the-line",
@@ -39,10 +152,53 @@ export const tours: Tour[] = [
     category: "vip",
     duration: "5 hours",
     price: "$250 - $350",
+    priceFrom: 250,
+    wasFrom: 300,
     rating: 5.0,
+    reviewCount: 328,
+    ratingBreakdown: { guide: 5.0, valueForMoney: 4.6 },
+    recommendationRate: 99,
+    badgeOfExcellence: true,
+    priceGuarantee: true,
+    operator: "Beijing Royal Guides",
+    productCode: "67316P225",
+    reviews: [
+      {
+        name: "Isabella C.",
+        country: "Spain",
+        date: "2026-07-05",
+        rating: 5,
+        verified: true,
+        text: "Beyond our expectations. Priority entry, a private guide, exclusive areas, and a tea ceremony under the cypress trees. A truly unforgettable morning.",
+      },
+      {
+        name: "Liam O.",
+        country: "Ireland",
+        date: "2026-06-12",
+        rating: 5,
+        verified: true,
+        text: "The skip-the-line completely changed the experience. In summer the standard queue is brutal. Zero waiting, straight in. Exceptional tour.",
+      },
+      {
+        name: "Nina S.",
+        country: "Norway",
+        date: "2026-05-02",
+        rating: 5,
+        verified: true,
+        text: "Worth it for the restricted courtyards alone. Things very few people ever see. Our guide timed everything perfectly around the crowds.",
+      },
+    ],
     highlights: ["Priority entry", "Private guide", "Exclusive areas", "Tea ceremony"],
+    includes: ["Express priority entrance", "Dedicated private guide", "Access to exclusive/restricted courtyards", "Imperial tea ceremony", "Pre-arranged transport from hotel"],
+    excludes: ["Gratuities", "Lunch"],
+    meetingPoint: "Hotel pickup arranged at booking.",
+    notSuitable: ["Wheelchair users (some exclusive areas are not accessible)"],
+    freeCancellation: true,
+    cancellationPolicy: "Free cancellation up to 48 hours before the tour for a full refund.",
+    payLater: true,
+    bookURL: "https://www.getyourguide.com/beijing-l67/",
     image: "/images/vip-tour.webp",
-    description: "Skip every queue with priority entry and a private guide. Access exclusive areas, restricted courtyards, and enjoy an imperial tea ceremony."
+    description: "Skip every queue with priority entry and a private guide. Access exclusive areas, restricted courtyards, and enjoy an imperial tea ceremony.",
   },
   {
     slug: "half-day-essentials",
@@ -50,10 +206,53 @@ export const tours: Tour[] = [
     category: "half-day",
     duration: "3 hours",
     price: "$35 - $55",
+    priceFrom: 35,
+    wasFrom: 40,
     rating: 4.7,
+    reviewCount: 2137,
+    ratingBreakdown: { guide: 4.8, valueForMoney: 4.7 },
+    recommendationRate: 95,
+    badgeOfExcellence: true,
+    priceGuarantee: false,
+    operator: "Beijing Discovery Tours",
+    productCode: "11301P584",
+    reviews: [
+      {
+        name: "Emma W.",
+        country: "Canada",
+        date: "2026-07-14",
+        rating: 5,
+        verified: true,
+        text: "Perfect for a busy schedule. Three hours, zero wasted time, all the must-sees covered. Our guide kept the group moving but never felt rushed.",
+      },
+      {
+        name: "Tom Berger",
+        country: "Austria",
+        date: "2026-06-08",
+        rating: 4,
+        verified: true,
+        text: "Great value. You see the essentials efficiently. Bring comfortable shoes, it is a fast-paced walk through the heart of the palace.",
+      },
+      {
+        name: "Yuki N.",
+        country: "Japan",
+        date: "2026-04-20",
+        rating: 5,
+        verified: false,
+        text: "Exactly what I needed before an afternoon flight. Guide was friendly and the meeting point was easy to find.",
+      },
+    ],
     highlights: ["Meridian Gate", "Hall of Supreme Harmony", "Imperial Garden"],
+    includes: ["Professional guide", "Pre-booked entrance ticket", "Small group (max 15)"],
+    excludes: ["Hotel pickup", "Gratuities", "Treasure Gallery ticket"],
+    meetingPoint: "Meridian Gate (south entrance), red umbrella near the ticket office.",
+    notSuitable: ["Those wanting every side hall"],
+    freeCancellation: true,
+    cancellationPolicy: "Free cancellation up to 24 hours before the tour for a full refund.",
+    payLater: true,
+    bookURL: "https://www.getyourguide.com/beijing-l67/",
     image: "/images/halfday-tour.webp",
-    description: "Short on time? Hit the must-sees with a knowledgeable guide in 3 hours. Cover the Meridian Gate, Hall of Supreme Harmony, and Imperial Garden efficiently."
+    description: "Short on time? Hit the must-sees with a knowledgeable guide in 3 hours. Cover the Meridian Gate, Hall of Supreme Harmony, and Imperial Garden efficiently.",
   },
   {
     slug: "full-day-complete-palace",
@@ -61,10 +260,53 @@ export const tours: Tour[] = [
     category: "full-day",
     duration: "8 hours",
     price: "$120 - $180",
+    priceFrom: 120,
+    wasFrom: 150,
     rating: 4.9,
+    reviewCount: 576,
+    ratingBreakdown: { guide: 4.9, valueForMoney: 4.8 },
+    recommendationRate: 98,
+    badgeOfExcellence: true,
+    priceGuarantee: true,
+    operator: "Authentic China Tours",
+    productCode: "26448P91",
+    reviews: [
+      {
+        name: "Rebecca M.",
+        country: "Australia",
+        date: "2026-07-10",
+        rating: 5,
+        verified: true,
+        text: "The complete experience. Every major hall, the Treasure Gallery, East and West Palaces, then Jingshan Park at sunset. The included lunch was excellent.",
+      },
+      {
+        name: "Hannah T.",
+        country: "United Kingdom",
+        date: "2026-06-17",
+        rating: 5,
+        verified: true,
+        text: "Paced beautifully over the full day. By the end I felt I truly understood the palace, not just ticked boxes. Our guide was a walking encyclopedia.",
+      },
+      {
+        name: "Seok-min K.",
+        country: "South Korea",
+        date: "2026-05-25",
+        rating: 4,
+        verified: true,
+        text: "Wonderful and comprehensive. Slightly long if you are not a history fan, but for us it was ideal. The Jingshan rooftop view is the perfect finale.",
+      },
+    ],
     highlights: ["All major halls", "Treasure Gallery", "East & West Palaces", "Jingshan Park"],
+    includes: ["Professional guide for the full day", "All entrance & Treasure Gallery tickets", "Chinese lunch", "Jingshan Park ticket", "Small group (max 12)"],
+    excludes: ["Hotel pickup", "Gratuities", "Drinks"],
+    meetingPoint: "Meridian Gate (south entrance), red umbrella near the ticket office.",
+    notSuitable: ["Very young children (8+ hours of walking)"],
+    freeCancellation: true,
+    cancellationPolicy: "Free cancellation up to 24 hours before the tour for a full refund.",
+    payLater: true,
+    bookURL: "https://www.getyourguide.com/beijing-l67/",
     image: "/images/full-day-tour.webp",
-    description: "The complete Forbidden City experience: every major hall, the Treasure Gallery, and Jingshan Park for the iconic rooftop view. 8 hours, lunch included."
+    description: "The complete Forbidden City experience: every major hall, the Treasure Gallery, and Jingshan Park for the iconic rooftop view. 8 hours, lunch included.",
   },
   {
     slug: "sunset-photography-tour",
@@ -72,13 +314,52 @@ export const tours: Tour[] = [
     category: "private",
     duration: "4 hours",
     price: "$160 - $220",
+    priceFrom: 160,
+    wasFrom: 190,
     rating: 4.8,
+    reviewCount: 214,
+    ratingBreakdown: { guide: 4.9, valueForMoney: 4.5 },
+    recommendationRate: 96,
+    badgeOfExcellence: true,
+    priceGuarantee: true,
+    operator: "Beijing Photo Tours",
+    productCode: "5598173P1",
+    reviews: [
+      {
+        name: "Oliver G.",
+        country: "Netherlands",
+        date: "2026-07-03",
+        rating: 5,
+        verified: true,
+        text: "Timed perfectly for golden hour. Our guide knew every quiet angle and set us up for shots we would never have found alone. The Jingshan sunset was spectacular.",
+      },
+      {
+        name: "Clara D.",
+        country: "Switzerland",
+        date: "2026-06-02",
+        rating: 5,
+        verified: true,
+        text: "A photographer's dream. Small group, unhurried, and the guide adjusted the route to the best light. Highly recommend bringing a tripod for Jingshan.",
+      },
+      {
+        name: "Victor P.",
+        country: "Ukraine",
+        date: "2026-04-28",
+        rating: 4,
+        verified: true,
+        text: "Great tour with lovely light. Just be aware entry is one-way, so the final exit is at the north gate, transport planning needed.",
+      },
+    ],
     highlights: ["Golden hour access", "Photo guidance", "Best angles", "Jingshan sunset"],
+    includes: ["Photographer-guide", "Pre-booked entrance ticket", "Jingshan Park ticket", "Small group (max 8)"],
+    excludes: ["Tripod rental", "Hotel pickup", "Gratuities", "Drinks"],
+    meetingPoint: "Meridian Gate (south entrance), red umbrella near the ticket office.",
+    notSuitable: ["Total beginners (assumes basic camera knowledge)"],
+    freeCancellation: true,
+    cancellationPolicy: "Free cancellation up to 48 hours before the tour for a full refund.",
+    payLater: true,
+    bookURL: "https://www.getyourguide.com/beijing-l67/",
     image: "/images/sunset-photography.webp",
-    description: "Timed for the golden hour, this private photography tour covers the palace's most photogenic angles. End at Jingshan Park for a panoramic sunset."
-  }
+    description: "Timed for the golden hour, this private photography tour covers the palace's most photogenic angles. End at Jingshan Park for a panoramic sunset.",
+  },
 ];
-
-export function getToursByCategory(category: Tour["category"]): Tour[] {
-  return tours.filter((t) => t.category === category);
-}

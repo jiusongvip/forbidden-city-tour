@@ -1,11 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { websiteSchema, touristAttractionSchema, breadcrumbListSchema } from "../utils/schema";
-const schema = [websiteSchema(), touristAttractionSchema(), breadcrumbListSchema([{ name: "Home", url: "/" }])];
+import Icon from "../components/Icon.astro";
+import { tours } from "../data/tours";
+import { websiteSchema, touristAttractionSchema, breadcrumbListSchema, itemListSchema, faqPageSchema } from "../utils/schema";
+
+const featured = tours.slice(0, 3);
+const tourItems = tours.map((t) => ({ name: t.name, url: "/tours/" + t.slug }));
+const formatDate = (d: string) => new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const faqs = [
+  { question: "How long does a Forbidden City tour take?", answer: "Most tours run 3-4 hours for the essentials (half-day) up to 6-8 hours for a full day including the Treasure Gallery and Jingshan Park. We recommend budgeting 4-6 hours for a comfortable visit." },
+  { question: "Is a guided tour of the Forbidden City worth it?", answer: "Yes. A good guide brings 600 years of imperial history to life, knows the quietest routes through the crowds, and most importantly handles your pre-booked entrance ticket, which is the hardest part of visiting in peak season." },
+  { question: "Do I need to book a Forbidden City tour in advance?", answer: "Absolutely. Palace Museum tickets are released exactly 7 days ahead at 8:00 PM Beijing time and sell out in minutes during peak season. Tours that include ticket handling remove this stress entirely." },
+  { question: "How much does a Forbidden City tour cost?", answer: "Budget group and half-day tours start around $35 per person. Private tours range from $120 to $250. VIP skip-the-line experiences with exclusive areas run $250-$350. Entry tickets themselves are 60 CNY (about $8.50) in peak season." },
+  { question: "What is the best time to visit the Forbidden City?", answer: "Spring (April-May) and autumn (September-October) offer the best weather and light. Arrive at the Meridian Gate by 8:00 AM to beat the crowds. Avoid Chinese Golden Week and the summer peak if you can." },
+  { question: "What should I bring for a Forbidden City tour?", answer: "Your passport (required for entry and must match the ticket), comfortable walking shoes, water, sunscreen, and a hat. There is very little shade in the courtyards." },
+];
+const schema = [
+  websiteSchema(),
+  touristAttractionSchema(),
+  itemListSchema(tourItems),
+  faqPageSchema(faqs),
+  breadcrumbListSchema([{ name: "Home", url: "/" }]),
+];
 ---
 <Layout
   title="Forbidden City Tour 2026: Best Guided Tours, Tickets & Tips"
-  description="Plan your Forbidden City tour in Beijing: compare guided tours, private VIP experiences, and half-day itineraries. 2026 ticket prices, hours, and insider tips."
+  description="Plan your Forbidden City tour in Beijing: compare the best guided tours and private VIP experiences, see 2026 ticket prices and opening hours, and get insider tips to beat the crowds."
   ogImage="/images/og-default.webp"
   canonicalURL="/"
   schema={schema}
@@ -29,69 +49,124 @@ const schema = [websiteSchema(), touristAttractionSchema(), breadcrumbListSchema
           Beijing, China
         </p>
         <h1 class="text-4xl leading-none font-bold text-white tracking-tight md:text-6xl">
-          Your Complete Guide to the Best Forbidden City Tours
+          Forbidden City Tour: Best Tours, Tickets & Insider Guide
         </h1>
         <p class="mt-6 max-w-md text-lg leading-relaxed text-white/80">
-          Compare guided tours, private VIP experiences, and half-day itineraries. Get ticket booking tips and insider advice.
+          Compare top-rated guided tours, private VIP experiences, and half-day itineraries. Get 2026 ticket prices, opening hours, and the tips you need to beat the crowds.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="/tours" class="rounded-md bg-imperial px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">
-            Compare Tours
+          <a href="#top-tours" class="rounded-md bg-imperial px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">
+            Compare Top Tours
           </a>
-          <a href="/guide" class="rounded-md border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 active:translate-y-px">
-            Read the Guide
+          <a href="#plan" class="rounded-md border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 active:translate-y-px">
+            Plan Your Visit
           </a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Quick Facts -->
+  <section class="mx-auto max-w-7xl px-6 pt-16">
+    <div class="grid gap-px overflow-hidden rounded-lg border border-stone-warm bg-stone-warm sm:grid-cols-2 lg:grid-cols-4">
+      <div class="bg-pearl p-5"><p class="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal"><Icon name="clock" class="h-3.5 w-3.5" /> Opening Hours</p><p class="mt-1 font-display font-medium text-ink">8:30 AM - 5:00 PM (peak)</p></div>
+      <div class="bg-pearl p-5"><p class="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal"><Icon name="ticket" class="h-3.5 w-3.5" /> Ticket Price</p><p class="mt-1 font-display font-medium text-ink">60 CNY peak / 40 CNY off</p></div>
+      <div class="bg-pearl p-5"><p class="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal"><Icon name="clock" class="h-3.5 w-3.5" /> Recommended Time</p><p class="mt-1 font-display font-medium text-ink">4-6 hours</p></div>
+      <div class="bg-pearl p-5"><p class="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-charcoal"><Icon name="locationDot" class="h-3.5 w-3.5" /> Entry</p><p class="mt-1 font-display font-medium text-ink">Meridian Gate (south)</p></div>
+    </div>
+  </section>
+
+  <!-- Top-Rated Tours (commercial intent) -->
+  <section id="top-tours" class="mx-auto max-w-7xl px-6 py-24">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-sm font-medium uppercase tracking-widest text-imperial">Tours</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Top-Rated Forbidden City Tours 2026</h2>
+        <p class="mt-3 max-w-lg text-charcoal">Our expert-reviewed picks, from budget group tours to exclusive VIP experiences. Prices, durations, and verified traveler reviews included.</p>
+      </div>
+      <a href="#top-tours" class="inline-flex items-center gap-1.5 text-sm font-medium text-imperial hover:underline">Jump to tour details <Icon name="arrowRight" class="h-3.5 w-3.5" /></a>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {featured.map((tour) => (
+        <article class="group flex flex-col overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
+          <a href={`/tours/${tour.slug}`} class="relative block overflow-hidden">
+            <img src={tour.image} alt={tour.name} class="h-52 w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="600" height="400" />
+            {tour.rating >= 4.8 && (
+              <span class="absolute left-3 top-3 rounded-sm bg-gold px-2 py-0.5 text-xs font-bold uppercase tracking-widest text-ink">Top Rated</span>
+            )}
+          </a>
+          <div class="flex flex-1 flex-col p-6">
+            <div class="flex items-center justify-between text-xs text-charcoal">
+              <span class="uppercase tracking-widest">{tour.category}</span>
+              <span class="inline-flex items-center gap-1 rounded-sm bg-imperial/10 px-2 py-0.5 font-medium text-imperial">
+                <Icon name="star" class="h-3 w-3" /> {tour.rating} ({tour.reviewCount.toLocaleString()})
+              </span>
+            </div>
+            <h3 class="mt-2 font-display text-lg font-medium"><a href={`/tours/${tour.slug}`} class="hover:text-imperial">{tour.name}</a></h3>
+            <p class="mt-1 text-sm text-charcoal">{tour.duration}</p>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="font-display text-2xl font-bold text-imperial">From ${tour.priceFrom}</span>
+              {tour.wasFrom && <span class="text-sm text-charcoal line-through">${tour.wasFrom}</span>}
+            </div>
+            <div class="mt-5 flex gap-3 pt-1">
+              <a href={tour.bookURL} target="_blank" rel="noopener sponsored" class="flex-1 rounded-md bg-imperial px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">Book</a>
+              <a href={`/tours/${tour.slug}`} class="rounded-md border border-stone-warm px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-imperial/30 hover:text-imperial">Details</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
   <!-- Tour Categories -->
-  <section class="mx-auto max-w-7xl px-6 py-24">
-    <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Find Your Perfect Tour</h2>
-    <p class="mt-3 max-w-lg text-charcoal">From quick half-day walks to in-depth private explorations, there's a tour for every traveler.</p>
-    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-      <a href="/tours" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
-        <div class="h-40 bg-stone-warm">
-          <img src="/images/group-tour.webp" alt="Group of tourists exploring the Forbidden City with an English-speaking guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
-        </div>
-        <div class="p-5">
-          <h3 class="font-display text-lg font-medium">Group Tours</h3>
-          <p class="mt-1 text-sm text-charcoal">Join a guided group and explore the highlights with an expert.</p>
-        </div>
-      </a>
-      <a href="/private-tours" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
-        <div class="h-40 bg-stone-warm">
-          <img src="/images/private-tour.webp" alt="Private guided tour through the Forbidden City imperial courtyards" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
-        </div>
-        <div class="p-5">
-          <h3 class="font-display text-lg font-medium">Private Tours</h3>
-          <p class="mt-1 text-sm text-charcoal">Tailored itineraries with a personal guide at your own pace.</p>
-        </div>
-      </a>
-      <a href="/vip-tours" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
-        <div class="h-40 bg-stone-warm">
-          <img src="/images/vip-tour.webp" alt="VIP skip-the-line priority access to the Forbidden City" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
-        </div>
-        <div class="p-5">
-          <h3 class="font-display text-lg font-medium">VIP Fast Track</h3>
-          <p class="mt-1 text-sm text-charcoal">Skip the lines with priority access and exclusive areas.</p>
-        </div>
-      </a>
-      <a href="/half-day-tour" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
-        <div class="h-40 bg-stone-warm">
-          <img src="/images/halfday-tour.webp" alt="Half-day Forbidden City tour covering the essential highlights" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
-        </div>
-        <div class="p-5">
-          <h3 class="font-display text-lg font-medium">Half-Day Tours</h3>
-          <p class="mt-1 text-sm text-charcoal">Perfect for tight schedules. See the essentials in 3-4 hours.</p>
-        </div>
-      </a>
+  <section id="categories" class="bg-stone-warm py-24">
+    <div class="mx-auto max-w-7xl px-6">
+      <p class="text-sm font-medium uppercase tracking-widest text-imperial">Tour Types</p>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Find Your Perfect Forbidden City Tour</h2>
+      <p class="mt-3 max-w-lg text-charcoal">From quick half-day walks to in-depth private explorations, there's a tour for every traveler.</p>
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <a href="/tours/imperial-highlights-group" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
+          <div class="h-40 bg-stone-warm">
+            <img src="/images/group-tour.webp" alt="Group of tourists exploring the Forbidden City with an English-speaking guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-lg font-medium">Group Tours</h3>
+            <p class="mt-1 text-sm text-charcoal">Join a guided group and explore the highlights with an expert.</p>
+          </div>
+        </a>
+        <a href="/tours/private-imperial-deep-dive" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
+          <div class="h-40 bg-stone-warm">
+            <img src="/images/private-tour.webp" alt="Private guided tour through the Forbidden City imperial courtyards" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-lg font-medium">Private Tours</h3>
+            <p class="mt-1 text-sm text-charcoal">Tailored itineraries with a personal guide at your own pace.</p>
+          </div>
+        </a>
+        <a href="/tours/vip-skip-the-line" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
+          <div class="h-40 bg-stone-warm">
+            <img src="/images/vip-tour.webp" alt="VIP skip-the-line priority access to the Forbidden City" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-lg font-medium">VIP Fast Track</h3>
+            <p class="mt-1 text-sm text-charcoal">Skip the lines with priority access and exclusive areas.</p>
+          </div>
+        </a>
+        <a href="/tours/half-day-essentials" class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
+          <div class="h-40 bg-stone-warm">
+            <img src="/images/halfday-tour.webp" alt="Half-day Forbidden City tour covering the essential highlights" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="400" height="267" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-lg font-medium">Half-Day Tours</h3>
+            <p class="mt-1 text-sm text-charcoal">Perfect for tight schedules. See the essentials in 3-4 hours.</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Why Visit -->
-  <section class="relative py-24 overflow-hidden">
+  <section id="why" class="relative py-24 overflow-hidden">
     <div class="absolute inset-0">
       <img src="/images/vip-tour.webp" alt="Forbidden City panoramic view" class="h-full w-full object-cover" loading="lazy" />
       <div class="absolute inset-0 bg-ink/40"></div>
@@ -132,53 +207,237 @@ const schema = [websiteSchema(), touristAttractionSchema(), breadcrumbListSchema
     </div>
   </section>
 
-  <!-- Quick Info -->
-  <section class="mx-auto max-w-7xl px-6 py-24">
-    <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Before You Go</h2>
-    <p class="mt-3 text-charcoal">Essential information to plan your visit.</p>
+  <!-- Plan Your Visit (informational intent) -->
+  <section id="plan" class="mx-auto max-w-7xl px-6 py-24">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Plan Your Visit</p>
+    <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Before You Go: Tickets, Timing & Getting There</h2>
+    <p class="mt-3 max-w-lg text-charcoal">The essential facts for planning your Forbidden City tour, all in one place.</p>
     <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
       <div class="border-t-2 border-imperial pt-6">
-        <h3 class="font-display text-lg font-medium">Opening Hours</h3>
+        <h3 class="flex items-center gap-2 font-display text-lg font-medium"><Icon name="clock" class="h-4 w-4 text-imperial" /> Opening Hours</h3>
         <div class="mt-3 space-y-1 text-sm text-charcoal">
-          <p>Apr-Oct: 8:30 AM - 5:00 PM</p>
-          <p>Nov-Mar: 8:30 AM - 4:30 PM</p>
+          <p>Apr-Oct: 8:30 AM - 5:00 PM (last entry 4:00 PM)</p>
+          <p>Nov-Mar: 8:30 AM - 4:30 PM (last entry 3:30 PM)</p>
           <p class="text-imperial">Closed Mondays (except holidays)</p>
         </div>
-        <a href="/opening-hours" class="mt-4 inline-block text-sm font-medium text-imperial hover:underline">Full schedule</a>
+        <a href="#guide" class="mt-4 inline-block text-sm font-medium text-imperial hover:underline">Visitor guide</a>
       </div>
       <div class="border-t-2 border-gold pt-6">
-        <h3 class="font-display text-lg font-medium">Ticket Prices</h3>
+        <h3 class="flex items-center gap-2 font-display text-lg font-medium"><Icon name="ticket" class="h-4 w-4 text-gold" /> Ticket Prices & Booking</h3>
         <div class="mt-3 space-y-1 text-sm text-charcoal">
-          <p>Peak season: 60 CNY (Apr-Oct)</p>
+          <p>Peak season: 60 CNY (Apr-Oct) &asymp; $8.50</p>
           <p>Off season: 40 CNY (Nov-Mar)</p>
-          <p>Online booking required in advance</p>
+          <p>Released 7 days ahead &middot; sells out fast</p>
+          <p class="text-xs text-charcoal/70">Prices verified Aug 2026</p>
         </div>
-        <a href="/tickets" class="mt-4 inline-block text-sm font-medium text-imperial hover:underline">Ticket guide</a>
+        <a href="#tickets" class="mt-4 inline-block text-sm font-medium text-imperial hover:underline">Ticket guide</a>
       </div>
       <div class="border-t-2 border-stone-warm pt-6">
-        <h3 class="font-display text-lg font-medium">Getting There</h3>
+        <h3 class="flex items-center gap-2 font-display text-lg font-medium"><Icon name="locationDot" class="h-4 w-4 text-charcoal" /> Getting There</h3>
         <div class="mt-3 space-y-1 text-sm text-charcoal">
           <p>Subway Line 1 to Tiananmen East</p>
           <p>Enter through the Meridian Gate (south)</p>
           <p>Passport required for entry</p>
         </div>
-        <a href="/transport" class="mt-4 inline-block text-sm font-medium text-imperial hover:underline">Directions</a>
+        <a href="#guide" class="mt-4 inline-block text-sm font-medium text-imperial hover:underline">Getting there tips</a>
+      </div>
+    </div>
+
+    <div class="mt-16 rounded-lg border border-stone-warm bg-pearl p-8">
+      <h3 class="font-display text-xl font-medium">How to Visit in a Nutshell</h3>
+      <p class="mt-3 text-charcoal">Plan to arrive at the Meridian Gate by <strong class="text-ink">8:00 AM</strong>. Tickets release 7 days ahead at 8:00 PM Beijing time, so book the moment they drop or choose a tour that handles ticketing. The classic route takes you north from the Meridian Gate along the central axis: Hall of Supreme Harmony, the emperor's living quarters, and out through the Imperial Garden. Finish at Jingshan Park for the iconic rooftop view.</p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a href="#guide" class="inline-flex items-center gap-1.5 rounded-md bg-imperial px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">Full visitor guide <Icon name="arrowRight" class="h-3.5 w-3.5" /></a>
+        <a href="#why" class="rounded-md border border-stone-warm px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-imperial/30 hover:text-imperial">Palace history</a>
+        <a href="#nearby" class="rounded-md border border-stone-warm px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-imperial/30 hover:text-imperial">Nearby attractions</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- Tickets (standalone section absorbed from tickets.astro) -->
+  <section id="tickets" class="mx-auto max-w-7xl px-6 pb-24">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Tickets</p>
+    <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Forbidden City Tickets 2026: Prices & How to Book</h2>
+    <p class="mt-3 max-w-2xl text-charcoal">Official Palace Museum ticket prices for the 2026 season and step-by-step booking instructions for international visitors.</p>
+    <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div class="border-t-2 border-imperial pt-6">
+        <h3 class="flex items-center gap-2 font-display text-lg font-medium"><Icon name="ticket" class="h-4 w-4 text-imperial" /> Ticket Prices</h3>
+        <div class="mt-3 space-y-1 text-sm text-charcoal">
+          <p>Peak season (Apr-Oct): <strong class="text-ink">60 CNY</strong> &asymp; $8.50</p>
+          <p>Off season (Nov-Mar): 40 CNY</p>
+          <p>Treasure Gallery & Clock Exhibition: 10 CNY extra each</p>
+          <p class="text-xs text-charcoal/70">Prices verified Aug 2026</p>
+        </div>
+      </div>
+      <div class="border-t-2 border-gold pt-6">
+        <h3 class="flex items-center gap-2 font-display text-lg font-medium"><Icon name="circleCheck" class="h-4 w-4 text-gold" /> How to Book</h3>
+        <div class="mt-3 space-y-1 text-sm text-charcoal">
+          <p>Official site: dpm.org.cn or the 'Palace Museum' WeChat mini-program</p>
+          <p>Passport number required for every visitor</p>
+          <p>Tickets release <strong class="text-ink">7 days ahead at 8:00 PM Beijing time</strong></p>
+          <p>Daily visitor limit: 80,000</p>
+        </div>
+      </div>
+      <div class="border-t-2 border-stone-warm pt-6">
+        <h3 class="flex items-center gap-2 font-display text-lg font-medium"><Icon name="clock" class="h-4 w-4 text-charcoal" /> Pro Tips</h3>
+        <div class="mt-3 space-y-1 text-sm text-charcoal">
+          <p>Peak-season tickets sell out within minutes - book the moment they drop</p>
+          <p>Third-party platforms resell at a 20-50% markup but accept international cards</p>
+          <p>Ticket inquiry: <a href="tel:+864009501925" class="text-imperial hover:underline">+86 400-950-1925</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 rounded-lg border border-imperial/15 bg-imperial/5 p-6">
+      <p class="text-sm text-charcoal"><strong class="text-ink">Prefer to skip the hassle?</strong> Our guided tours include ticket handling and priority entry. <a href="#top-tours" class="text-imperial hover:underline">Browse tours with tickets included</a>.</p>
+    </div>
+  </section>
+
+  <!-- Visitor Guide (absorbed from guide.astro) -->
+  <section id="guide" class="mx-auto max-w-7xl px-6 pb-24">
+    <div class="rounded-lg border border-stone-warm bg-pearl p-8 md:p-12">
+      <p class="text-sm font-medium uppercase tracking-widest text-imperial">Visitor Guide</p>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">How to Visit the Forbidden City in 2026</h2>
+      <p class="mt-3 max-w-2xl text-charcoal">Best time to visit, the classic route, and what to pack. Everything you need before you step through the Meridian Gate.</p>
+
+      <div class="mt-10 grid gap-12 md:grid-cols-5">
+        <article class="md:col-span-3 space-y-10">
+          <div>
+            <h3 class="text-xl font-bold tracking-tight">Best Time to Visit</h3>
+            <p class="mt-3 text-charcoal">Spring (April-May) and autumn (September-October) offer the best weather, mild temperatures and blue skies perfect for photography. Arrive at the Meridian Gate by <strong class="text-ink">8:00 AM</strong> to beat the crowd; the palace opens at 8:30 AM.</p>
+            <p class="mt-2 text-charcoal">Avoid Chinese national holidays (Golden Week in early October, Chinese New Year) when the city is packed with domestic tourists.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold tracking-tight">Suggested Route (4-5 hours)</h3>
+            <ol class="mt-5 space-y-4">
+              <li class="flex gap-4"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">1</span><div><strong class="font-medium">Meridian Gate</strong> <span class="text-charcoal">- Enter through the south gate. This massive gate alone is worth 15 minutes of admiring.</span></div></li>
+              <li class="flex gap-4"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">2</span><div><strong class="font-medium">Hall of Supreme Harmony</strong> <span class="text-charcoal">- The iconic throne hall. Peak into the interior from the viewing area. Crowded, so be patient for a front-row view.</span></div></li>
+              <li class="flex gap-4"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">3</span><div><strong class="font-medium">Halls of Central & Preserving Harmony</strong> <span class="text-charcoal">- Behind Supreme Harmony. Less crowded, more detailed views of imperial architecture.</span></div></li>
+              <li class="flex gap-4"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">4</span><div><strong class="font-medium">Palace of Heavenly Purity</strong> <span class="text-charcoal">- The emperor's living quarters. A quieter section with intimate scale and fascinating details.</span></div></li>
+              <li class="flex gap-4"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">5</span><div><strong class="font-medium">Treasure Gallery</strong> <span class="text-charcoal">- Worth the 10 CNY extra. Imperial jewelry, jade, and ceremonial objects in a series of connected halls.</span></div></li>
+              <li class="flex gap-4"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">6</span><div><strong class="font-medium">Imperial Garden</strong> <span class="text-charcoal">- End your visit at the tranquil garden before exiting north. Ancient cypress trees, rockeries, and pavilions.</span></div></li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold tracking-tight">What to Bring</h3>
+            <ul class="mt-3 space-y-2 text-charcoal">
+              <li><strong class="text-ink">Passport</strong> - Required for entry. The name must match your ticket.</li>
+              <li><strong class="text-ink">Comfortable shoes</strong> - You will walk 5-8 km on stone and marble. No exaggeration.</li>
+              <li><strong class="text-ink">Water and snacks</strong> - There are cafes inside but they're expensive and busy. Bring your own.</li>
+              <li><strong class="text-ink">Sunscreen and hat</strong> - There is very little shade in the courtyards.</li>
+              <li><strong class="text-ink">Power bank</strong> - You will take hundreds of photos.</li>
+            </ul>
+          </div>
+        </article>
+
+        <aside class="md:col-span-2 space-y-8">
+          <div class="rounded-lg border border-imperial/15 bg-imperial/5 p-6">
+            <h3 class="font-display font-medium text-imperial">Quick Facts</h3>
+            <div class="mt-3 space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-charcoal">Size</span><span class="font-medium">72 hectares</span></div>
+              <div class="flex justify-between"><span class="text-charcoal">Buildings</span><span class="font-medium">980</span></div>
+              <div class="flex justify-between"><span class="text-charcoal">Rooms</span><span class="font-medium">8,704</span></div>
+              <div class="flex justify-between"><span class="text-charcoal">Built</span><span class="font-medium">1406-1420</span></div>
+              <div class="flex justify-between"><span class="text-charcoal">Visitors/year</span><span class="font-medium">16 million</span></div>
+              <div class="flex justify-between"><span class="text-charcoal">UNESCO</span><span class="font-medium">Since 1987</span></div>
+            </div>
+          </div>
+          <div class="rounded-lg border border-stone-warm bg-pearl p-6">
+            <h3 class="font-display font-medium">Explore Tours</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="#top-tours" class="text-imperial hover:underline">All Forbidden City Tours</a></li>
+              <li><a href="/tours/private-imperial-deep-dive" class="text-imperial hover:underline">Private Tours</a></li>
+              <li><a href="/tours/vip-skip-the-line" class="text-imperial hover:underline">VIP Skip-the-Line Tours</a></li>
+              <li><a href="/tours/half-day-essentials" class="text-imperial hover:underline">Half-Day Tours</a></li>
+              <li><a href="/tours/full-day-complete-palace" class="text-imperial hover:underline">Full-Day Tours</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Attractions (absorbed from nearby.astro) -->
+  <section id="nearby" class="mx-auto max-w-7xl px-6 pb-24">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Nearby</p>
+    <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Attractions Near the Forbidden City</h2>
+    <p class="mt-3 max-w-xl text-charcoal">Six must-see places within a 15-minute walk of the palace. Perfect for combining with your visit.</p>
+    <div class="mt-10 space-y-6">
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">1</span><div><strong class="font-medium">Tiananmen Square</strong><p class="text-sm text-charcoal">Directly south of the Forbidden City. The world's largest public square (440,000 sqm), flanked by the Great Hall of the People and Mao's Mausoleum. Free entry; you will pass through it on the way to the Meridian Gate.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">2</span><div><strong class="font-medium">Jingshan Park</strong><p class="text-sm text-charcoal">Directly north, across the street from the exit. <strong class="text-ink">The single best panoramic view of the Forbidden City.</strong> Climb to the hilltop pagoda (10 minutes) for the iconic rooftop photo. Entry: 2 CNY. Don't skip this.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">3</span><div><strong class="font-medium">Beihai Park</strong><p class="text-sm text-charcoal">One of China's oldest imperial gardens, west of the palace. Famous for the White Dagoba and Nine-Dragon Screen. Entry: 10 CNY (peak). 15-minute walk from the north gate.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">4</span><div><strong class="font-medium">Wangfujing Shopping Street</strong><p class="text-sm text-charcoal">Beijing's most famous shopping street, east of the Forbidden City. Great for post-tour dining. 15-minute walk from the east gate.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">5</span><div><strong class="font-medium">National Museum of China</strong><p class="text-sm text-charcoal">On the east side of Tiananmen Square. Over 1.4 million artifacts spanning 5,000 years of Chinese civilization. Free entry with passport. Closed Mondays.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial text-xs font-bold text-white">6</span><div><strong class="font-medium">Qianmen Street</strong><p class="text-sm text-charcoal">A historic commercial street south of Tiananmen Square with restored Qing-era storefronts and the best Peking duck in Beijing. 15-20 minutes south of the square.</p></div></div>
+    </div>
+
+    <h3 class="mt-14 text-xl font-bold tracking-tight">Where to Eat Nearby</h3>
+    <div class="mt-4 space-y-5">
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-gold text-xs font-bold text-ink">E</span><div><div class="flex flex-wrap items-center gap-2"><strong class="font-medium">翼松楼餐厅</strong><span class="rounded-sm bg-imperial/10 px-2 py-0.5 text-xs font-medium text-imperial">249 m</span></div><p class="text-sm text-charcoal">Nearest sit-down option to the south gate. Classic Beijing cuisine in a casual setting.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-gold text-xs font-bold text-ink">E</span><div><div class="flex flex-wrap items-center gap-2"><strong class="font-medium">Subway (Mutianyu branch)</strong><span class="rounded-sm bg-imperial/10 px-2 py-0.5 text-xs font-medium text-imperial">207 m</span></div><p class="text-sm text-charcoal">Fast, reliable option for a quick bite if you are short on time.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-gold text-xs font-bold text-ink">E</span><div><div class="flex flex-wrap items-center gap-2"><strong class="font-medium">壹淼·越南菜（三卅店）</strong><span class="rounded-sm bg-imperial/10 px-2 py-0.5 text-xs font-medium text-imperial">1.41 km</span></div><p class="text-sm text-charcoal">Highly rated Vietnamese restaurant a short ride away - a refreshing change of pace.</p></div></div>
+    </div>
+
+    <h3 class="mt-14 text-xl font-bold tracking-tight">Where to Shop Nearby</h3>
+    <div class="mt-4 space-y-5">
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial/10 text-xs font-bold text-imperial">S</span><div><div class="flex flex-wrap items-center gap-2"><strong class="font-medium">TaiKoo Li Sanlitun</strong><span class="rounded-sm bg-imperial/10 px-2 py-0.5 text-xs font-medium text-imperial">5.27 km</span></div><p class="text-sm text-charcoal">Beijing's trendiest open-air shopping district with designer flagship stores and cafes. About 25 minutes east.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial/10 text-xs font-bold text-imperial">S</span><div><div class="flex flex-wrap items-center gap-2"><strong class="font-medium">BeiJing SKP-S</strong><span class="rounded-sm bg-imperial/10 px-2 py-0.5 text-xs font-medium text-imperial">7.09 km</span></div><p class="text-sm text-charcoal">A luxury mall renowned for its futuristic, art-installation interiors. Worth a visit for the architecture alone.</p></div></div>
+      <div class="flex gap-4"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-imperial/10 text-xs font-bold text-imperial">S</span><div><div class="flex flex-wrap items-center gap-2"><strong class="font-medium">Chow Tai Fook</strong><span class="rounded-sm bg-imperial/10 px-2 py-0.5 text-xs font-medium text-imperial">15.61 km</span></div><p class="text-sm text-charcoal">One of China's best-known jewellery retailers. Good for gold and jade souvenirs.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Traveler Reviews -->
   <section class="bg-stone-warm py-24">
+    <div class="mx-auto max-w-7xl px-6">
+      <p class="text-sm font-medium uppercase tracking-widest text-imperial">Reviews</p>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">What Travelers Say</h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {featured.flatMap((tour) =>
+          tour.reviews.filter((r) => r.verified).slice(0, 1).map((r) => (
+            <article class="rounded-lg border border-stone-warm bg-pearl p-6">
+              <div class="flex items-center gap-3">
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-imperial/10 font-display text-sm font-bold text-imperial">{r.name.charAt(0)}</span>
+                <div>
+                  <p class="text-sm font-medium text-ink">{r.name}</p>
+                  <p class="text-xs text-charcoal">{r.country} &middot; {formatDate(r.date)}</p>
+                </div>
+                <span class="ml-auto inline-flex items-center gap-1 rounded-sm bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700"><Icon name="circleCheck" class="h-3 w-3" /> Verified</span>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-charcoal">{r.text}</p>
+              <p class="mt-4 text-xs font-medium text-imperial"><a href={`/tours/${tour.slug}`} class="hover:underline">{tour.name}</a></p>
+            </article>
+          ))
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="mx-auto max-w-3xl px-6 py-24">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">FAQ</p>
+    <h2 class="mt-3 text-3xl font-bold tracking-tight">Forbidden City Tour: Frequently Asked Questions</h2>
+    <div class="mt-10 space-y-6">
+      {faqs.map((f) => (
+        <details class="group rounded-lg border border-stone-warm bg-pearl p-6">
+          <summary class="flex cursor-pointer items-center justify-between font-display font-medium text-ink">
+            {f.question}
+            <span class="ml-4 shrink-0 text-charcoal transition-transform group-open:rotate-180"><Icon name="chevronDown" class="h-4 w-4" /></span>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-charcoal">{f.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-ink py-24">
     <div class="mx-auto max-w-7xl px-6 text-center">
-      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Ready to Explore the Forbidden City?</h2>
-      <p class="mx-auto mt-4 max-w-lg text-charcoal">Compare the best tours, find your ideal itinerary, and make your trip unforgettable.</p>
-      <div class="mt-8 flex justify-center gap-4">
-        <a href="/tours" class="rounded-md bg-imperial px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">
-          Browse All Tours
-        </a>
-        <a href="/guide" class="rounded-md border border-imperial/20 px-6 py-3 text-sm font-medium text-imperial transition-colors hover:bg-imperial/5 active:translate-y-px">
-          Read Our Guide
-        </a>
+      <h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">Ready to Explore the Forbidden City?</h2>
+      <p class="mx-auto mt-4 max-w-lg text-white/60">Compare the best tours, find your ideal itinerary, and make your trip unforgettable.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#top-tours" class="rounded-md bg-imperial px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">Browse All Tours</a>
+        <a href="#guide" class="rounded-md border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/20 active:translate-y-px">Read Our Guide</a>
       </div>
     </div>
   </section>
