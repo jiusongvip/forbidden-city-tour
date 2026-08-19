@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://forbidden-city-tour.com/sitemap-index.xml
+Sitemap: https://www.forbidden-city-tour.com/sitemap-index.xml
 
 User-agent: GPTBot
 Allow: /

@@ -1,7 +1,7 @@
 // Schema.org structured data helpers for Forbidden City Tours
 import type { Tour } from "../data/tours";
 
-const SITE_URL = "https://forbidden-city-tour.com";
+const SITE_URL = "https://www.forbidden-city-tour.com";
 const SITE_NAME = "Forbidden City Tours";
 
 export interface BreadcrumbItem {
