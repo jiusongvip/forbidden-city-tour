@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { breadcrumbListSchema } from "../../utils/schema";
+
+const schema = [breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Contact", url: "/contact/" }])];
+---
+<Layout
+  title="Contact Forbidden City Tours: Get in Touch"
+  description="Contact the Forbidden City Tours team by email at hello@forbidden-city-tour.com. We reply within two business days on tours, tickets, and visitor guides."
+  canonicalURL="/contact/"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Contact", url: "/contact/" }]}
+>
+  <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Contact</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Get in Touch</h1>
+    <p class="mt-4 text-lg text-charcoal">Questions about a tour, a correction to share, or a partnership idea? We read every message.</p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-24 space-y-12">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Email Us</h2>
+      <p class="mt-4 text-charcoal">The fastest way to reach us is email: <a href="mailto:hello@forbidden-city-tour.com" class="font-medium text-imperial hover:underline">hello@forbidden-city-tour.com</a></p>
+      <p class="mt-3 text-charcoal">We reply within two business days, Monday to Friday. For urgent booking changes, contact the operator you booked with directly — their confirmation email lists their support channel.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">What We Can Help With</h2>
+      <ul class="mt-4 space-y-2 text-charcoal">
+        <li>Choosing between group, private, and VIP tours</li>
+        <li>Understanding the official ticketing rules and seasonal hours</li>
+        <li>Corrections to any price, date, or fact on this site</li>
+        <li>Content partnerships and licensing requests</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Official Ticketing Support</h2>
+      <p class="mt-4 text-charcoal">We are an independent guide and cannot access the Palace Museum's booking system. For official ticket inquiries, contact the museum directly via <a href="https://en.dpm.org.cn/" target="_blank" rel="noopener" class="text-imperial hover:underline">en.dpm.org.cn</a> or the official hotline <strong class="text-ink">+86 400-950-1925</strong> (source: Palace Museum official site).</p>
+    </div>
+  </section>
+</Layout>

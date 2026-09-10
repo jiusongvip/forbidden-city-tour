@@ -1,0 +1,41 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { breadcrumbListSchema } from "../../utils/schema";
+
+const schema = [breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Terms of Use", url: "/terms/" }])];
+---
+<Layout
+  title="Terms & Affiliate Disclosure | Forbidden City Tours"
+  description="Terms for using Forbidden City Tours: editorial independence, affiliate disclosure, ticket price accuracy, and limitation of liability. Updated September 2026."
+  canonicalURL="/terms/"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Terms of Use", url: "/terms/" }]}
+>
+  <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">Legal</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Terms of Use</h1>
+    <p class="mt-4 text-lg text-charcoal">Last updated: <time datetime="2026-09-10">September 10, 2026</time>. By using this site you agree to the terms below.</p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-24 space-y-12">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Informational Purpose</h2>
+      <p class="mt-4 text-charcoal">Forbidden City Tours is an independent guide. We are not affiliated with, endorsed by, or acting as an agent for the Palace Museum or any tour operator. Content is for general travel planning and is not a contractual offer.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Affiliate Disclosure</h2>
+      <p class="mt-4 text-charcoal">Some outbound tour links are affiliate links. If you book through them, we may earn a commission at no additional cost to you. This compensation does not influence our rankings or recommendations, and affiliate tours are labeled with sponsored link attributes.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Accuracy & Prices</h2>
+      <p class="mt-4 text-charcoal">Ticket prices, hours, and rules change with the seasons. We verify prices regularly — most recently in <time datetime="2026-08-01">August 2026</time> — but you should always confirm final prices and availability with the official seller before booking. Official entry tickets are sold exclusively by the Palace Museum via dpm.org.cn and its WeChat mini-program.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Limitation of Liability</h2>
+      <p class="mt-4 text-charcoal">We provide the site "as is" and are not liable for losses arising from reliance on its content, including missed entries or changed schedules. External sites linked from these pages are governed by their own terms. Questions? Email <a href="mailto:hello@forbidden-city-tour.com" class="text-imperial hover:underline">hello@forbidden-city-tour.com</a>.</p>
+    </div>
+  </section>
+</Layout>

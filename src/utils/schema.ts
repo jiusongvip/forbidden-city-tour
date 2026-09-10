@@ -3,6 +3,19 @@ import type { Tour } from "../data/tours";
 
 const SITE_URL = "https://www.forbidden-city-tour.com";
 const SITE_NAME = "Forbidden City Tours";
+const LAST_REVIEWED = "2026-09-10";
+
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: "Independent editorial guide to Forbidden City tours, tickets, and visitor tips in Beijing.",
+    email: "hello@forbidden-city-tour.com",
+    logo: `${SITE_URL}/favicon.svg`,
+  };
+}
 
 export interface BreadcrumbItem {
   name: string;
@@ -23,6 +36,7 @@ export function websiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description: "Expert guides to the best Forbidden City tours, tickets, and visitor tips in Beijing.",
+    dateModified: LAST_REVIEWED,
     potentialAction: {
       "@type": "SearchAction",
       target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/search?q={search_term_string}` },
@@ -54,6 +68,11 @@ export function touristAttractionSchema() {
     openingHours: "Tu-Su 08:30-17:00",
     publicAccess: true,
     touristType: ["History buffs", "Architecture lovers", "Cultural tourists", "Photography enthusiasts"],
+    sameAs: [
+      "https://en.wikipedia.org/wiki/Forbidden_City",
+      "https://zh.wikipedia.org/wiki/%E6%95%85%E5%AE%AB",
+      "https://www.wikidata.org/wiki/Q80290",
+    ],
   };
 }
 
@@ -104,6 +123,12 @@ export function faqPageSchema(questions: Array<{ question: string; answer: strin
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    dateModified: LAST_REVIEWED,
     mainEntity: questions.map((q) => ({
       "@type": "Question",
       name: q.question,
@@ -159,17 +184,19 @@ export function tourSchema(tour: Tour) {
   };
 }
 
-export function articleSchema(title: string, description: string, datePublished: string) {
+export function articleSchema(title: string, description: string, datePublished: string, dateModified: string = LAST_REVIEWED) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: title,
     description,
     datePublished,
+    dateModified,
     author: {
       "@type": "Organization",
       name: SITE_NAME,
       url: SITE_URL,
+      email: "hello@forbidden-city-tour.com",
     },
     publisher: {
       "@type": "Organization",

@@ -1,5 +1,6 @@
 --- 
 import "../styles/global.css";
+import { organizationSchema } from "../utils/schema";
 const {
   title = "Forbidden City Tour",
   description = "Plan your Forbidden City tour in Beijing: guided tours, tickets, tips.",
@@ -55,6 +56,7 @@ const pageURL = rawPath === "/"
     {schema && (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
   </head>
   <body class="bg-stone text-ink antialiased">
     <nav class="sticky top-0 z-50 border-b border-stone-warm/80 bg-stone/90 backdrop-blur-sm">
@@ -97,38 +99,47 @@ const pageURL = rawPath === "/"
     </main>
     <footer class="border-t border-stone-warm bg-ink">
       <div class="mx-auto max-w-7xl px-6 py-16">
-        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-          <div>
-            <h4 class="mb-4 text-sm font-medium text-gold-light">Tours</h4>
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-5">
+        <div>
+          <h3 class="mb-4 text-sm font-medium text-gold-light">Tours</h3>
             <ul class="space-y-2 text-sm text-stone-warm/60">
               <li><a href="/#top-tours" class="transition-colors hover:text-gold-light">All Tours</a></li>
               <li><a href="/tours/private-imperial-deep-dive/" class="transition-colors hover:text-gold-light">Private Tours</a></li>
               <li><a href="/tours/vip-skip-the-line/" class="transition-colors hover:text-gold-light">VIP Tours</a></li>
             </ul>
           </div>
-          <div>
-            <h4 class="mb-4 text-sm font-medium text-gold-light">Plan</h4>
+        <div>
+          <h3 class="mb-4 text-sm font-medium text-gold-light">Plan</h3>
             <ul class="space-y-2 text-sm text-stone-warm/60">
               <li><a href="/#tickets" class="transition-colors hover:text-gold-light">Tickets</a></li>
               <li><a href="/#guide" class="transition-colors hover:text-gold-light">Visitor Guide</a></li>
               <li><a href="/#plan" class="transition-colors hover:text-gold-light">How to Get There</a></li>
             </ul>
           </div>
-          <div>
-            <h4 class="mb-4 text-sm font-medium text-gold-light">Explore</h4>
+        <div>
+          <h3 class="mb-4 text-sm font-medium text-gold-light">Explore</h3>
             <ul class="space-y-2 text-sm text-stone-warm/60">
               <li><a href="/#why" class="transition-colors hover:text-gold-light">History</a></li>
               <li><a href="/#guide" class="transition-colors hover:text-gold-light">Photo Spots</a></li>
               <li><a href="/#nearby" class="transition-colors hover:text-gold-light">Nearby Attractions</a></li>
             </ul>
           </div>
-          <div>
-            <h4 class="mb-4 text-sm font-medium text-gold-light">Guides</h4>
+        <div>
+          <h3 class="mb-4 text-sm font-medium text-gold-light">Guides</h3>
             <ul class="space-y-2 text-sm text-stone-warm/60">
               <li><a href="/#faq" class="transition-colors hover:text-gold-light">FAQ</a></li>
               <li><a href="/blog/best-time-to-visit/" class="transition-colors hover:text-gold-light">Best Time to Visit</a></li>
               <li><a href="/blog/walking-tour/" class="transition-colors hover:text-gold-light">Walking Tour Tips</a></li>
               <li><a href="/blog/night-tour/" class="transition-colors hover:text-gold-light">Night Tour Guide</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-4 text-sm font-medium text-gold-light">Company</h3>
+            <ul class="space-y-2 text-sm text-stone-warm/60">
+              <li><a href="/about/" class="transition-colors hover:text-gold-light">About Us</a></li>
+              <li><a href="/contact/" class="transition-colors hover:text-gold-light">Contact</a></li>
+              <li><a href="/privacy/" class="transition-colors hover:text-gold-light">Privacy Policy</a></li>
+              <li><a href="/terms/" class="transition-colors hover:text-gold-light">Terms</a></li>
             </ul>
           </div>
         </div>

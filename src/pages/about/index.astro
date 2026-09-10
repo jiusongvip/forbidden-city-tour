@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { breadcrumbListSchema, organizationSchema } from "../../utils/schema";
+
+const schema = [
+  breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "About", url: "/about/" }]),
+  organizationSchema(),
+];
+---
+<Layout
+  title="About Forbidden City Tours: Who We Are & Standards"
+  description="Who is behind Forbidden City Tours: our editorial standards, how we verify ticket prices and tour reviews, and how to reach our independent Beijing travel team."
+  canonicalURL="/about/"
+  schema={schema}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "About", url: "/about/" }]}
+>
+  <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
+    <p class="text-sm font-medium uppercase tracking-widest text-imperial">About</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">About Forbidden City Tours</h1>
+    <p class="mt-4 text-lg text-charcoal">An independent editorial team helping international visitors plan a smarter visit to the Palace Museum in Beijing.</p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-24 space-y-12">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Who We Are</h2>
+      <p class="mt-4 text-charcoal">Forbidden City Tours is an independent travel guide focused on one thing: helping first-time and returning visitors make sense of visiting the Forbidden City. We compare guided tours, explain the official ticketing system, and publish practical itineraries based on the palace's real rules — the 7-day booking window, passport entry, and seasonal closing days.</p>
+      <p class="mt-3 text-charcoal">We are not affiliated with the Palace Museum, tour operators, or booking platforms. When we recommend a tour, we earn a commission if you book through our links — this never affects what we publish or how we rank tours.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Editorial Standards</h2>
+      <ul class="mt-4 space-y-2 text-charcoal">
+        <li><strong class="text-ink">Verified prices.</strong> Ticket prices and tour prices are checked against official sources and operator listings. Prices on this site were last verified <time datetime="2026-08-01">August 2026</time>.</li>
+        <li><strong class="text-ink">Real reviews.</strong> Ratings and quotes come from verified traveler bookings, never invented.</li>
+        <li><strong class="text-ink">Cited sources.</strong> Official rules are attributed to the Palace Museum and UNESCO rather than restated without a source.</li>
+        <li><strong class="text-ink">Dated updates.</strong> Every guide carries a publication date and is re-reviewed each season.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">How We Make Money</h2>
+      <p class="mt-4 text-charcoal">Some links on this site are affiliate links (for example to GetYourGuide). If you book a tour through them, we may earn a commission at no extra cost to you. Entry tickets themselves are sold only by the Palace Museum through its official site, dpm.org.cn — we do not resell tickets.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Contact Us</h2>
+      <p class="mt-4 text-charcoal">Questions, corrections, or partnership requests? Email <a href="mailto:hello@forbidden-city-tour.com" class="text-imperial hover:underline">hello@forbidden-city-tour.com</a> or visit our <a href="/contact/" class="text-imperial hover:underline">contact page</a>. We reply within two business days.</p>
+    </div>
+  </section>
+</Layout>
