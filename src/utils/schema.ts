@@ -9,6 +9,13 @@ export interface BreadcrumbItem {
   url: string;
 }
 
+function toAbsoluteURL(path: string): string {
+  if (path.startsWith("http")) return path;
+  if (path === "/") return SITE_URL;
+  if (path.includes("#")) return `${SITE_URL}${path}`;
+  return `${SITE_URL}${path.endsWith("/") ? path : path + "/"}`;
+}
+
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",
@@ -58,7 +65,7 @@ export function breadcrumbListSchema(items: BreadcrumbItem[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+      item: toAbsoluteURL(item.url),
     })),
   };
 }
@@ -73,7 +80,7 @@ export function itemListSchema(tours: Array<{ name: string; url: string }>) {
       item: {
         "@type": "TouristTrip",
         name: t.name,
-        url: `${SITE_URL}${t.url}`,
+        url: toAbsoluteURL(t.url),
       },
     })),
   };
@@ -114,7 +121,7 @@ export function tourSchema(tour: Tour) {
     "@type": "TouristTrip",
     name: tour.name,
     description: tour.description,
-    url: `${SITE_URL}/tours/${tour.slug}`,
+    url: `${SITE_URL}/tours/${tour.slug}/`,
     image: `${SITE_URL}${tour.image}`,
     provider: {
       "@type": "Organization",

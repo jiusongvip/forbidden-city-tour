@@ -11,7 +11,7 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const tour = tours.find((t) => t.slug === slug) as Tour;
 const related = tours.filter((t) => t.slug !== slug).slice(0, 3);
-const schema = [tourSchema(tour), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Tours", url: "/#top-tours" }, { name: tour.name, url: `/tours/${tour.slug}` }])];
+const schema = [tourSchema(tour), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Tours", url: "/#top-tours" }, { name: tour.name, url: `/tours/${tour.slug}/` }])];
 const topRated = tour.rating >= 4.8;
 const verifiedReviews = tour.reviews.filter((r) => r.verified);
 const formatDate = (d: string) => new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
@@ -19,9 +19,9 @@ const formatDate = (d: string) => new Date(d + "T00:00:00").toLocaleDateString("
 <Layout
   title={`${tour.name} | Forbidden City Tours 2026`}
   description={tour.description}
-  canonicalURL={`/tours/${tour.slug}`}
+  canonicalURL={`/tours/${tour.slug}/`}
   schema={schema}
-  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Tours", url: "/#top-tours" }, { name: tour.name, url: `/tours/${tour.slug}` }]}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Tours", url: "/#top-tours" }, { name: tour.name, url: `/tours/${tour.slug}/` }]}
 >
   <section class="mx-auto max-w-7xl px-6 pt-24 pb-16">
     <div class="grid gap-12 md:grid-cols-5">
@@ -214,7 +214,7 @@ const formatDate = (d: string) => new Date(d + "T00:00:00").toLocaleDateString("
       <h2 class="text-3xl font-bold tracking-tight">Other Tours You Might Like</h2>
       <div class="mt-8 grid gap-6 md:grid-cols-3">
         {related.map((r) => (
-          <a href={`/tours/${r.slug}`} class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
+          <a href={`/tours/${r.slug}/`} class="group overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
             <div class="h-44 overflow-hidden">
               <img src={r.image} alt={r.name} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             </div>

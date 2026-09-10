@@ -1,14 +1,14 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import { breadcrumbListSchema, articleSchema } from "../../../utils/schema";
-const schema = [articleSchema("Self-Guided Forbidden City Walking Tour: The Best DIY Route 2026", "Walk the Forbidden City on your own with this step-by-step DIY route covering all the must-see halls, hidden courtyards, and the best photo stops.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: "Walking Tour", url: "/blog/walking-tour" }])];
+const schema = [articleSchema("Self-Guided Forbidden City Walking Tour: The Best DIY Route 2026", "Walk the Forbidden City on your own with this step-by-step DIY route covering all the must-see halls, hidden courtyards, and the best photo stops.", "2026-07-30"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Blog", url: "/blog/" }, { name: "Walking Tour", url: "/blog/walking-tour/" }])];
 ---
 <Layout
   title="Self-Guided Forbidden City Walking Tour: Best DIY Route 2026"
   description="Walk the Forbidden City at your own pace with this self-guided route covering all must-see halls, hidden courtyards, and insider navigation tips."
   canonicalURL="/blog/walking-tour/"
   schema={schema}
-  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: "Walking Tour", url: "/blog/walking-tour" }]}
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog/" }, { name: "Walking Tour", url: "/blog/walking-tour/" }]}
 >
   <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
     <p class="text-sm font-medium uppercase tracking-widest text-imperial">Blog</p>

@@ -5,7 +5,7 @@ import { tours } from "../data/tours";
 import { websiteSchema, touristAttractionSchema, breadcrumbListSchema, itemListSchema, faqPageSchema } from "../utils/schema";
 
 const featured = tours.slice(0, 3);
-const tourItems = tours.map((t) => ({ name: t.name, url: "/tours/" + t.slug }));
+const tourItems = tours.map((t) => ({ name: t.name, url: "/tours/" + t.slug + "/" }));
 const formatDate = (d: string) => new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 const faqs = [
   { question: "How long does a Forbidden City tour take?", answer: "Most tours run 3-4 hours for the essentials (half-day) up to 6-8 hours for a full day including the Treasure Gallery and Jingshan Park. We recommend budgeting 4-6 hours for a comfortable visit." },
@@ -38,6 +38,7 @@ const schema = [
         alt="Forbidden City Hall of Supreme Harmony at golden hour"
         class="h-full w-full object-cover"
         loading="eager"
+        fetchpriority="high"
         width="1600"
         height="1067"
       />
@@ -88,7 +89,7 @@ const schema = [
     <div class="mt-12 grid gap-6 md:grid-cols-3">
       {featured.map((tour) => (
         <article class="group flex flex-col overflow-hidden rounded-lg border border-stone-warm bg-pearl transition-colors hover:border-imperial/20">
-          <a href={`/tours/${tour.slug}`} class="relative block overflow-hidden">
+          <a href={`/tours/${tour.slug}/`} class="relative block overflow-hidden">
             <img src={tour.image} alt={tour.name} class="h-52 w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="600" height="400" />
             {tour.rating >= 4.8 && (
               <span class="absolute left-3 top-3 rounded-sm bg-gold px-2 py-0.5 text-xs font-bold uppercase tracking-widest text-ink">Top Rated</span>
@@ -101,7 +102,7 @@ const schema = [
                 <Icon name="star" class="h-3 w-3" /> {tour.rating} ({tour.reviewCount.toLocaleString()})
               </span>
             </div>
-            <h3 class="mt-2 font-display text-lg font-medium"><a href={`/tours/${tour.slug}`} class="hover:text-imperial">{tour.name}</a></h3>
+            <h3 class="mt-2 font-display text-lg font-medium"><a href={`/tours/${tour.slug}/`} class="hover:text-imperial">{tour.name}</a></h3>
             <p class="mt-1 text-sm text-charcoal">{tour.duration}</p>
             <div class="mt-4 flex items-baseline gap-2">
               <span class="font-display text-2xl font-bold text-imperial">From ${tour.priceFrom}</span>
@@ -109,7 +110,7 @@ const schema = [
             </div>
             <div class="mt-5 flex gap-3 pt-1">
               <a href={tour.bookURL} target="_blank" rel="noopener sponsored" class="flex-1 rounded-md bg-imperial px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-imperial-dark active:translate-y-px">Book</a>
-              <a href={`/tours/${tour.slug}`} class="rounded-md border border-stone-warm px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-imperial/30 hover:text-imperial">Details</a>
+              <a href={`/tours/${tour.slug}/`} class="rounded-md border border-stone-warm px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-imperial/30 hover:text-imperial">Details</a>
             </div>
           </div>
         </article>
@@ -404,7 +405,7 @@ const schema = [
                 <span class="ml-auto inline-flex items-center gap-1 rounded-sm bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700"><Icon name="circleCheck" class="h-3 w-3" /> Verified</span>
               </div>
               <p class="mt-4 text-sm leading-relaxed text-charcoal">{r.text}</p>
-              <p class="mt-4 text-xs font-medium text-imperial"><a href={`/tours/${tour.slug}`} class="hover:underline">{tour.name}</a></p>
+              <p class="mt-4 text-xs font-medium text-imperial"><a href={`/tours/${tour.slug}/`} class="hover:underline">{tour.name}</a></p>
             </article>
           ))
         )}
