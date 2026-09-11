@@ -30,11 +30,8 @@ const pageURL = rawPath === "/"
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-05RV5GYHPR';
         document.head.appendChild(s);
       };
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadGA, { timeout: 5000 });
-      } else {
-        setTimeout(loadGA, 4000);
-      }
+      var kick = function () { setTimeout(loadGA, 800); };
+      if (document.readyState === 'complete') { kick(); } else { window.addEventListener('load', kick); }
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
