@@ -45,7 +45,7 @@ const schema = [breadcrumbListSchema([{ name: "Home", url: "/" }])];
           <p class="text-xs font-medium uppercase tracking-widest text-imperial">{post.tag}</p>
           <h3 class="mt-2 font-display text-xl font-medium"><a href={post.url} class="hover:text-imperial transition-colors">{post.title}</a></h3>
           <p class="mt-2 text-sm leading-relaxed text-charcoal">{post.description}</p>
-          <a href={post.url} class="mt-4 inline-block text-sm font-medium text-imperial hover:underline">Read the guide &rarr;</a>
+          <a href={post.url} class="mt-4 inline-block text-sm font-medium text-imperial underline underline-offset-2">Read the guide &rarr;</a>
         </article>
       ))}
     </div>
