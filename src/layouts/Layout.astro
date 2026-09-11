@@ -18,13 +18,23 @@ const pageURL = rawPath === "/"
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05RV5GYHPR"></script>
-    <script>
+    <!-- Google tag (gtag.js) — deferred so the 171KB script never competes with LCP -->
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-05RV5GYHPR');
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-05RV5GYHPR');
+      var loadGA = function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-05RV5GYHPR';
+        document.head.appendChild(s);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGA, { timeout: 5000 });
+      } else {
+        setTimeout(loadGA, 4000);
+      }
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,7 +44,7 @@ const pageURL = rawPath === "/"
     <link rel="canonical" href={pageURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
-    <link rel="preload" as="image" href="/images/hero.webp" imagesrcset="/images/hero-800.webp 800w, /images/hero.webp 1600w" imagesizes="100vw" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/hero.webp?v=2" imagesrcset="/images/hero-800.webp 800w, /images/hero.webp?v=2 1600w" imagesizes="100vw" fetchpriority="high" />
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

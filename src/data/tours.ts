@@ -89,7 +89,7 @@ export const tours: Tour[] = [
     cancellationPolicy: "Free cancellation up to 24 hours before the tour for a full refund.",
     payLater: true,
     bookURL: "https://www.getyourguide.com/beijing-l67/",
-    image: "/images/group-tour.webp",
+    image: "/images/group-tour.webp?v=2",
     description: "Join a small group led by an English-speaking guide through the Forbidden City's iconic halls. Ideal for first-time visitors seeking a 4-hour overview.",
   },
   {
@@ -143,7 +143,7 @@ export const tours: Tour[] = [
     cancellationPolicy: "Free cancellation up to 48 hours before the tour for a full refund.",
     payLater: true,
     bookURL: "https://www.getyourguide.com/beijing-l67/",
-    image: "/images/private-tour.webp",
+    image: "/images/private-tour.webp?v=2",
     description: "A private, fully customized tour with an expert historian. Explore the Treasure Gallery, Hall of Clocks, and hidden courtyards at your own pace.",
   },
   {
@@ -197,7 +197,7 @@ export const tours: Tour[] = [
     cancellationPolicy: "Free cancellation up to 48 hours before the tour for a full refund.",
     payLater: true,
     bookURL: "https://www.getyourguide.com/beijing-l67/",
-    image: "/images/vip-tour.webp",
+    image: "/images/vip-tour.webp?v=2",
     description: "Skip every queue with priority entry and a private guide. Access exclusive areas, restricted courtyards, and enjoy an imperial tea ceremony.",
   },
   {
@@ -305,7 +305,7 @@ export const tours: Tour[] = [
     cancellationPolicy: "Free cancellation up to 24 hours before the tour for a full refund.",
     payLater: true,
     bookURL: "https://www.getyourguide.com/beijing-l67/",
-    image: "/images/full-day-tour.webp",
+    image: "/images/full-day-tour.webp?v=2",
     description: "The complete Forbidden City experience: every major hall, the Treasure Gallery, and Jingshan Park for the iconic rooftop view. 8 hours, lunch included.",
   },
   {
