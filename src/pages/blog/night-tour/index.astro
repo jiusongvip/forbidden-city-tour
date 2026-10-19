@@ -1,26 +1,45 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { breadcrumbListSchema, articleSchema } from "../../../utils/schema";
-const schema = [articleSchema("Forbidden City Night Tour 2026: Can You Visit After Dark?", "Can you visit the Forbidden City at night? Discover the truth about night tours, evening access, special events, and the best alternatives in 2026.", "2026-07-30", "2026-09-10"), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Blog", url: "/blog/" }, { name: "Night Tour", url: "/blog/night-tour/" }])];
+import { breadcrumbListSchema, articleSchema, faqPageSchema } from "../../../utils/schema";
+const faqs = [
+  { question: "Is the Forbidden City open at night?", answer: "No. The Palace Museum takes its last visitors at 4:10 PM in peak season (April 1 - October 31) and at 3:30 PM in the low season, and everyone must be out by 5:00 PM and 4:30 PM respectively. There is no evening admission and no night tour product you can buy." },
+  { question: "What time does the Forbidden City close?", answer: "It opens at 8:30 AM. In peak season (April 1 - October 31) the gates close at 5:00 PM, with last admission at 4:10 PM. In the low season (November 1 - March 31) it closes at 4:30 PM, with last admission at 3:30 PM." },
+  { question: "Is the Forbidden City open every day?", answer: "No — it is closed every Monday unless that Monday falls on a Chinese statutory holiday. The palace also closes on Chinese New Year's Eve and New Year's Day, while the surrounding squares and streets run holiday light displays after dark." },
+  { question: "Can you see the Forbidden City lit up at night?", answer: "Not from inside, but the palace is very visible from public streets after dark. The northwest corner tower reflected in the moat is lit, and the walkway around it is free and open 24 hours. From Jingshan Park directly north you get the full roofline at sunset — the park stays open until 9:00 PM in summer." },
+  { question: "Are there night tickets for the Forbidden City?", answer: "There is no night ticket tier. Admission is the standard daytime ticket — 60 CNY in peak season and 40 CNY in the low season — booked against a timed entry slot. The only night openings in the museum's recent history were special events such as the 2019 Lantern Festival, announced weeks ahead and sold out in minutes." },
+];
+const schema = [articleSchema("Forbidden City at Night 2026: Is It Open? Hours, Exceptions and Best Views", "The Forbidden City has no night tours — last admission is 4:10 PM in summer and 3:30 PM in winter. Here are the rare exceptions and the best ways to see the palace after dark.", "2026-07-30", "2026-10-19"), faqPageSchema(faqs), breadcrumbListSchema([{ name: "Home", url: "/" }, { name: "Blog", url: "/blog/" }, { name: "Night Tour", url: "/blog/night-tour/" }])];
 ---
 <Layout
-  title="Forbidden City Night Tour 2026: Can You Visit After Dark?"
-  description="Can you visit the Forbidden City at night? The truth about night tours, evening access, rare events, and best alternatives for seeing the palace illuminated."
+  title="Forbidden City at Night 2026: Is It Open? Hours, Exceptions and Best Views"
+  description="The Forbidden City has no night tours — last admission is 4:10 PM in summer and 3:30 PM in winter. The rare exceptions, and the best ways to see the palace after dark."
   canonicalURL="/blog/night-tour/"
   schema={schema}
   breadcrumbs={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog/" }, { name: "Night Tour", url: "/blog/night-tour/" }]}
 >
   <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
     <p class="text-sm font-medium uppercase tracking-widest text-imperial">Blog</p>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Forbidden City Night Tour: Can You Visit After Dark?</h1>
-    <p class="mt-4 text-lg text-charcoal">The truth about evening access to Beijing's imperial palace and the best alternatives for seeing it illuminated.</p>
-    <p class="mt-6 text-sm text-charcoal">By <span class="font-medium text-ink">Forbidden City Tours Editorial Team</span> &middot; Published <time datetime="2026-07-30">July 30, 2026</time> &middot; Updated <time datetime="2026-09-10">September 10, 2026</time></p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-6xl">Forbidden City at Night: Is It Open After Dark?</h1>
+    <p class="mt-4 text-lg text-charcoal">No — the palace is shut and its ticket gates are locked long before sunset. Here is exactly what time it closes, the one historic exception, and the three places where you can still see the Forbidden City at night.</p>
+    <p class="mt-6 text-sm text-charcoal">By <span class="font-medium text-ink">Forbidden City Tours Editorial Team</span> &middot; Published <time datetime="2026-07-30">July 30, 2026</time> &middot; Updated <time datetime="2026-10-19">October 19, 2026</time></p>
   </section>
 
   <article class="mx-auto max-w-3xl px-6 pb-24 space-y-12">
     <div>
-      <h2 class="text-2xl font-bold tracking-tight">The Short Answer</h2>
-      <p class="mt-4 text-charcoal"><strong>No, there are no regular night tours of the Forbidden City.</strong> The Palace Museum closes to the public between 4:30 PM and 5:00 PM depending on the season, and visitors must exit by closing time. Unlike some European museums that offer late-night openings, the Forbidden City does not operate evening hours for general admission.</p>
+      <h2 class="text-2xl font-bold tracking-tight">Is the Forbidden City Open at Night?</h2>
+      <p class="mt-4 text-charcoal"><strong>No, there are no regular night tours of the Forbidden City.</strong> The Palace Museum stops admitting visitors in the mid-afternoon and the complex is emptied before dusk. Unlike some European museums that run late-night openings, the Forbidden City has no evening hours for general admission — and there is no night ticket tier to buy.</p>
+      <div class="mt-6 overflow-hidden rounded-lg border border-stone-warm">
+        <table class="w-full text-sm">
+          <thead class="border-b border-stone-warm bg-stone-warm/50">
+            <tr><th class="px-5 py-3 text-left font-medium">Season</th><th class="px-5 py-3 text-left font-medium">Opens</th><th class="px-5 py-3 text-left font-medium">Last admission</th><th class="px-5 py-3 text-left font-medium">Closes</th><th class="px-5 py-3 text-right font-medium">Ticket</th></tr>
+          </thead>
+          <tbody class="divide-y divide-stone-warm">
+            <tr><td class="px-5 py-3 font-medium">Peak (Apr 1 - Oct 31)</td><td class="px-5 py-3 text-charcoal">8:30 AM</td><td class="px-5 py-3 text-charcoal">4:10 PM</td><td class="px-5 py-3 text-charcoal">5:00 PM</td><td class="px-5 py-3 text-right">60 CNY</td></tr>
+            <tr><td class="px-5 py-3 font-medium">Low (Nov 1 - Mar 31)</td><td class="px-5 py-3 text-charcoal">8:30 AM</td><td class="px-5 py-3 text-charcoal">3:30 PM</td><td class="px-5 py-3 text-charcoal">4:30 PM</td><td class="px-5 py-3 text-right">40 CNY</td></tr>
+            <tr><td class="px-5 py-3 font-medium">Every Monday</td><td class="px-5 py-3 text-charcoal" colspan="4">Closed all day — unless that Monday is a Chinese statutory holiday</td><td class="px-5 py-3 text-right">n/a</td></tr>
+          </tbody>
+        </table>
+      </div>
       <p class="mt-3 text-charcoal">However, there are <strong>rare exceptions</strong> and some excellent alternatives that capture the magic of the palace at dusk and after dark.</p>
     </div>
 
@@ -34,7 +53,7 @@ const schema = [articleSchema("Forbidden City Night Tour 2026: Can You Visit Aft
       <h2 class="text-2xl font-bold tracking-tight">Best Alternatives for Evening Views</h2>
 
       <h3 class="text-xl font-semibold mt-6 mb-3">Jingshan Park at Sunset</h3>
-      <p class="text-charcoal">This is the single best way to see the Forbidden City at dusk. The park sits directly north of the palace, and the hilltop pagoda offers a <strong>stunning panoramic view</strong> of the entire complex bathed in golden sunset light. The park stays open until 9:00 PM in summer (8:00 PM in winter). Entry: 2 CNY. Arrive about one hour before sunset for the best light.</p>
+      <p class="text-charcoal">This is the single best way to see the Forbidden City at dusk. The park sits directly north of the palace, and the hilltop pagoda offers a <strong>stunning panoramic view</strong> of the entire complex bathed in golden sunset light. It stays open until 9:00 PM in peak season (April-October, last entry 8:30 PM) and 8:00 PM in the off season (last entry 7:30 PM). Entry: 2 CNY. Arrive about one hour before sunset for the golden light, and stay through it — the roofline keeps reading long after the sun drops.</p>
 
       <h3 class="text-xl font-semibold mt-6 mb-3">Corner Tower and Moat Walk</h3>
       <p class="text-charcoal">The <strong>northwest corner tower</strong> reflected in the moat is one of the most photographed scenes in Beijing. At dusk, the tower's lights come on and the water is often perfectly still. The moat path is public, free, and open 24 hours. Professional photographers line up here daily before sunset — arrive early to claim your spot.</p>
@@ -45,8 +64,8 @@ const schema = [articleSchema("Forbidden City Night Tour 2026: Can You Visit Aft
 
     <div>
       <h2 class="text-2xl font-bold tracking-tight">Late Afternoon Tours: The Next Best Thing</h2>
-      <p class="mt-4 text-charcoal">The closest you can get to a "night" experience is a <strong>late afternoon tour</strong>. Book the latest entry slot (12:00 PM entry, stay until closing at 5:00 PM in summer or 4:30 PM in winter). The last hour before closing is the quietest — the crowds have thinned, and the low-angle afternoon light creates warm, dramatic shadows on the red walls and golden roofs.</p>
-      <p class="mt-3 text-charcoal">Several private tours specifically target the late afternoon for this reason. You get the best light, fewer crowds, and the closest thing to an evening atmosphere without the night access.</p>
+      <p class="mt-4 text-charcoal">The closest you can get to a "night" experience is a <strong>late afternoon tour</strong>. Tickets are sold against timed entry slots released 7 days ahead at 8:00 PM Beijing time, so book the latest afternoon slot your date allows — you can then stay until the gates close at 5:00 PM in peak season or 4:30 PM in the low season. The last hour before closing is the quietest: the tour groups have gone, and the low-angle light puts warm, dramatic shadows across the red walls and golden roofs.</p>
+      <p class="mt-3 text-charcoal">Several private tours specifically target this window for this reason. You get the best light, fewer crowds, and the closest thing to an evening atmosphere without the night access. Pair it with sunset at Jingshan Park — see our <a href="/blog/best-time-to-visit/" class="text-imperial underline underline-offset-2">month-by-month guide to crowds and light</a> for what time of year puts the sun lowest over the rooflines.</p>
       <div class="mt-4">
         <a href="/#categories" class="text-sm font-medium text-imperial underline underline-offset-2">Browse late afternoon private tours</a>
       </div>
@@ -57,9 +76,21 @@ const schema = [articleSchema("Forbidden City Night Tour 2026: Can You Visit Aft
       <p class="mt-4 text-charcoal">During Chinese New Year and the Mid-Autumn Festival, the areas <em>around</em> the Forbidden City are beautifully decorated and illuminated. Tiananmen Square, Qianmen Street, and Wangfujing all have spectacular light displays. While the palace itself remains closed at night, the surrounding imperial district comes alive after dark.</p>
     </div>
 
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Night Tour Questions, Answered</h2>
+      <div class="mt-6 space-y-3">
+        {faqs.map((f) => (
+          <details class="group rounded-lg border border-stone-warm bg-pearl p-5">
+            <summary class="flex cursor-pointer items-center justify-between font-display font-medium text-ink">{f.question}</summary>
+            <p class="mt-3 text-sm text-charcoal">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+
     <div class="rounded-lg border border-imperial/15 bg-imperial/5 p-6">
       <h3 class="font-display font-medium text-imperial">Bottom Line</h3>
-      <p class="mt-2 text-charcoal">Do not plan a trip expecting a Forbidden City night tour. Instead, book a late afternoon private tour and follow it with sunset at Jingshan Park and an evening walk along the moat. You will see the palace at its most beautiful — and capture photographs most tourists miss.</p>
+      <p class="mt-2 text-charcoal">Do not plan a trip expecting a Forbidden City night tour. Instead, book a late afternoon private tour and follow it with sunset at Jingshan Park and an evening walk along the moat. You will see the palace at its most beautiful — and capture photographs most tourists miss. To cover the palace itself, use our <a href="/blog/walking-tour/" class="font-medium text-imperial underline underline-offset-2">self-guided walking route</a>, and check the <a href="/blog/best-time-to-visit/" class="font-medium text-imperial underline underline-offset-2">month-by-month crowd guide</a> before you pick a date.</p>
     </div>
   </article>
 </Layout>
